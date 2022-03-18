@@ -1,0 +1,80 @@
+object frmOpenFF: TfrmOpenFF
+  Left = 506
+  Height = 436
+  Top = 225
+  Width = 878
+  BorderStyle = bsDialog
+  Caption = 'Список папок'
+  ClientHeight = 436
+  ClientWidth = 878
+  DesignTimePPI = 120
+  Font.Height = -26
+  LCLVersion = '2.0.10.0'
+  object btDelFile: TButton
+    Left = 370
+    Height = 56
+    Top = 370
+    Width = 162
+    Anchors = [akLeft, akBottom]
+    Caption = 'Удалить'
+    Font.Height = -28
+    OnClick = btDelFileClick
+    ParentFont = False
+    TabOrder = 0
+  end
+  object btAddFile: TButton
+    Left = 190
+    Height = 56
+    Top = 370
+    Width = 172
+    Anchors = [akLeft, akBottom]
+    Caption = 'Добавить'
+    Font.Height = -28
+    OnClick = btAddFileClick
+    ParentFont = False
+    TabOrder = 1
+  end
+  object btOpenFile2: TButton
+    Left = 10
+    Height = 56
+    Top = 370
+    Width = 172
+    Anchors = [akLeft, akBottom]
+    Caption = 'Открыть'
+    Font.Height = -28
+    OnClick = btOpenFile2Click
+    ParentFont = False
+    TabOrder = 2
+  end
+  object btOpenFile3: TButton
+    Left = 704
+    Height = 56
+    Top = 370
+    Width = 162
+    Anchors = [akRight, akBottom]
+    Caption = 'Закрыть'
+    Font.Height = -28
+    ModalResult = 2
+    ParentFont = False
+    TabOrder = 3
+  end
+  object ListBox1: TListBox
+    Left = 10
+    Height = 350
+    Top = 10
+    Width = 856
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Font.Height = -26
+    ItemHeight = 0
+    ParentFont = False
+    TabOrder = 4
+  end
+  object OpenFile: TOpenDialog
+    Left = 40
+    Top = 50
+  end
+  object OpenFolder: TSelectDirectoryDialog
+    Left = 180
+    Top = 55
+  end
+end

@@ -1,0 +1,183 @@
+object frmEditExtra: TfrmEditExtra
+  Left = 576
+  Height = 481
+  Top = 296
+  Width = 898
+  BorderStyle = bsDialog
+  Caption = 'Дополнительные строки'
+  ClientHeight = 481
+  ClientWidth = 898
+  DesignTimePPI = 120
+  Font.Height = -26
+  OnClose = FormClose
+  ShowHint = True
+  LCLVersion = '2.0.10.0'
+  object leFullName: TLabeledEdit
+    Left = 644
+    Height = 44
+    Hint = 'Полное имя. Используется в заголовке служебной строки'
+    Top = 50
+    Width = 246
+    EditLabel.Height = 36
+    EditLabel.Width = 246
+    EditLabel.Caption = 'Полное имя'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.Height = -26
+    Font.Height = -26
+    ParentFont = False
+    TabOrder = 1
+  end
+  object Label1: TLabel
+    Left = 10
+    Height = 36
+    Top = 10
+    Width = 146
+    Caption = 'Доп. Строки'
+    Font.Height = -26
+    ParentColor = False
+    ParentFont = False
+  end
+  object lbItems: TListBox
+    Left = 10
+    Height = 310
+    Hint = 'Список доступных служебных строк/столбцов'
+    Top = 50
+    Width = 290
+    Font.Height = -26
+    ItemHeight = 0
+    OnSelectionChange = lbItemsSelectionChange
+    ParentFont = False
+    TabOrder = 0
+  end
+  object btAdd: TButton
+    Left = 10
+    Height = 40
+    Hint = 'Добавляет новый элемент'
+    Top = 380
+    Width = 130
+    Caption = 'Добавить'
+    Font.Height = -26
+    OnClick = btAddClick
+    ParentFont = False
+    TabOrder = 7
+  end
+  object btDel: TButton
+    Left = 170
+    Height = 40
+    Hint = 'Удаляет текущий элемент'
+    Top = 380
+    Width = 130
+    Caption = 'Удалить'
+    Font.Height = -26
+    OnClick = btDelClick
+    ParentFont = False
+    TabOrder = 8
+  end
+  object btUp: TButton
+    Left = 10
+    Height = 40
+    Top = 430
+    Width = 130
+    Caption = 'Выше'
+    Font.Height = -26
+    ParentFont = False
+    TabOrder = 9
+  end
+  object btDown: TButton
+    Left = 170
+    Height = 40
+    Top = 430
+    Width = 130
+    Caption = 'Ниже'
+    Font.Height = -26
+    ParentFont = False
+    TabOrder = 10
+  end
+  object leShortName: TLabeledEdit
+    Left = 644
+    Height = 44
+    Hint = 'Краткое имя, используется в заголовке служебного столбца'
+    Top = 130
+    Width = 246
+    EditLabel.Height = 36
+    EditLabel.Width = 246
+    EditLabel.Caption = 'Краткое имя'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.Height = -26
+    Font.Height = -26
+    ParentFont = False
+    TabOrder = 2
+  end
+  object cbUseCount: TCheckBox
+    Left = 644
+    Height = 40
+    Hint = 'При выставлении этого флага считается количество '#13#10'дней, попадающих в условие выбора'
+    Top = 180
+    Width = 164
+    Caption = 'Количество'
+    Font.Height = -26
+    ParentFont = False
+    TabOrder = 3
+  end
+  object Label2: TLabel
+    Left = 320
+    Height = 36
+    Top = 10
+    Width = 297
+    Caption = 'Использовать типы дней'
+    Font.Height = -26
+    ParentColor = False
+    ParentFont = False
+  end
+  object clbUsedTypes: TCheckListBox
+    Left = 320
+    Height = 310
+    Hint = 'Типы дней, участвующие в подсчете'
+    Top = 50
+    Width = 310
+    Font.Height = -26
+    ItemHeight = 0
+    ParentFont = False
+    TabOrder = 4
+  end
+  object Button5: TButton
+    Left = 770
+    Height = 40
+    Hint = 'Закрывает форму'
+    Top = 430
+    Width = 120
+    Cancel = True
+    Caption = 'Закрыть'
+    Font.Height = -26
+    ModalResult = 2
+    OnClick = Button5Click
+    ParentFont = False
+    TabOrder = 11
+  end
+  object btSetHours: TButton
+    Left = 640
+    Height = 40
+    Hint = 'При суммировании элементов использует заданное '#13#10'количество часов, а не содержащееся в элементе'
+    Top = 250
+    Width = 250
+    Caption = 'Задать часы'
+    Font.Height = -26
+    OnClick = btSetHoursClick
+    ParentFont = False
+    TabOrder = 5
+  end
+  object btDel2: TButton
+    Left = 640
+    Height = 40
+    Hint = 'Сохраняет текущий редактируемый элемент'
+    Top = 320
+    Width = 250
+    Caption = 'Сохранить'
+    Font.Height = -26
+    OnClick = btDel2Click
+    ParentFont = False
+    TabOrder = 6
+  end
+end

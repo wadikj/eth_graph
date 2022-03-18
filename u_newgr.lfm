@@ -1,0 +1,138 @@
+object frmNewGr: TfrmNewGr
+  Left = 616
+  Height = 328
+  Top = 308
+  Width = 454
+  BorderStyle = bsDialog
+  Caption = 'Новый график'
+  ClientHeight = 328
+  ClientWidth = 454
+  DesignTimePPI = 120
+  Font.Height = -26
+  ShowHint = True
+  LCLVersion = '2.0.10.0'
+  object Label1: TLabel
+    Left = 10
+    Height = 36
+    Top = 14
+    Width = 41
+    Caption = 'Год'
+    Font.Height = -26
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 210
+    Height = 36
+    Top = 14
+    Width = 78
+    Caption = 'Месяц'
+    Font.Height = -26
+    ParentColor = False
+    ParentFont = False
+  end
+  object cbMonth: TComboBox
+    Left = 210
+    Height = 44
+    Hint = 'Месяц нового графика'
+    Top = 50
+    Width = 230
+    Font.Height = -26
+    ItemHeight = 36
+    ItemIndex = 10
+    Items.Strings = (
+      '0-не задано'
+      '01-январь'
+      '02-февраль'
+      '03-март'
+      '04-апрель'
+      '05-май'
+      '06-июнь'
+      '07-июль'
+      '08-август'
+      '09-сентябрь'
+      '10-октябрь'
+      '11-ноябрь'
+      '12-декабрь'
+    )
+    OnSelect = cbMonthSelect
+    ParentFont = False
+    Style = csDropDownList
+    TabOrder = 0
+    Text = '10-октябрь'
+  end
+  object seYear: TSpinEdit
+    Left = 10
+    Height = 44
+    Hint = 'Год нового графика'
+    Top = 50
+    Width = 188
+    Font.Height = -26
+    MaxValue = 2100
+    MinValue = 2020
+    ParentFont = False
+    TabOrder = 1
+    Value = 2021
+  end
+  object leWeekends: TLabeledEdit
+    Left = 10
+    Height = 44
+    Hint = 'Выходные и праздничные дни месяца'
+    Top = 130
+    Width = 430
+    EditLabel.Height = 36
+    EditLabel.Width = 430
+    EditLabel.Caption = 'Выходные и праздничные числа'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.Height = -26
+    Font.Height = -26
+    ParentFont = False
+    TabOrder = 2
+    Text = 'leWeekends'
+  end
+  object Button1: TButton
+    Left = 50
+    Height = 51
+    Hint = 'Создает график'
+    Top = 268
+    Width = 124
+    Anchors = [akLeft, akBottom]
+    Caption = 'Создать'
+    Font.Height = -26
+    ModalResult = 1
+    ParentFont = False
+    TabOrder = 3
+  end
+  object Button2: TButton
+    Left = 260
+    Height = 51
+    Hint = 'Отмена операции'
+    Top = 268
+    Width = 120
+    Anchors = [akLeft, akBottom]
+    Cancel = True
+    Caption = 'Отмена'
+    Font.Height = -26
+    ModalResult = 2
+    ParentFont = False
+    TabOrder = 4
+  end
+  object leFileName: TLabeledEdit
+    Left = 10
+    Height = 44
+    Hint = 'Имя файла нового графика'
+    Top = 208
+    Width = 430
+    EditLabel.Height = 36
+    EditLabel.Width = 430
+    EditLabel.Caption = 'Имя файла'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.Height = -26
+    Font.Height = -26
+    ParentFont = False
+    TabOrder = 5
+    Text = 'leFileName'
+  end
+end

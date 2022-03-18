@@ -1,0 +1,114 @@
+object frmEditManList: TfrmEditManList
+  Left = 851
+  Height = 581
+  Top = 140
+  Width = 475
+  Caption = 'Список работников'
+  ClientHeight = 581
+  ClientWidth = 475
+  DesignTimePPI = 120
+  Font.Height = -29
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  ShowHint = True
+  LCLVersion = '2.0.10.0'
+  object Memo1: TMemo
+    Left = 0
+    Height = 579
+    Hint = 'Список сотрудников'
+    Top = 2
+    Width = 300
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Font.Height = -29
+    ParentFont = False
+    ScrollBars = ssAutoVertical
+    TabOrder = 0
+  end
+  object Button5: TButton
+    Left = 311
+    Height = 56
+    Hint = 'Сохраняет текущий список сотрудников в программе'
+    Top = 444
+    Width = 152
+    Anchors = [akRight, akBottom]
+    Caption = 'Сохранить'
+    Font.Height = -29
+    ModalResult = 1
+    ParentFont = False
+    TabOrder = 1
+  end
+  object Button6: TButton
+    Left = 311
+    Height = 56
+    Hint = 'Закрывает текущую форму'
+    Top = 514
+    Width = 152
+    Anchors = [akRight, akBottom]
+    Cancel = True
+    Caption = 'Закрыть'
+    Font.Height = -29
+    ModalResult = 2
+    ParentFont = False
+    TabOrder = 2
+  end
+  object Button7: TButton
+    Left = 311
+    Height = 56
+    Hint = 'Извлекает список сотрудников из текущего графика'
+    Top = 10
+    Width = 152
+    Anchors = [akTop, akRight]
+    Caption = 'Извлечь'
+    Font.Height = -29
+    OnClick = Button7Click
+    ParentFont = False
+    TabOrder = 3
+  end
+  object btSet: TButton
+    Left = 311
+    Height = 56
+    Hint = 'Задает  список сотрудников для текущего графика'
+    Top = 90
+    Width = 152
+    Anchors = [akTop, akRight]
+    Caption = 'Задать'
+    Font.Height = -29
+    OnClick = btSetClick
+    ParentFont = False
+    TabOrder = 4
+  end
+  object btSave: TButton
+    Left = 315
+    Height = 56
+    Hint = 'Сохранят текущий список работников в файл'
+    Top = 170
+    Width = 152
+    Anchors = [akTop, akRight]
+    Caption = 'В файл...'
+    Font.Height = -29
+    OnClick = btSaveClick
+    ParentFont = False
+    TabOrder = 5
+  end
+  object btLoad: TButton
+    Left = 315
+    Height = 56
+    Hint = 'Загружает список работников из файла'
+    Top = 250
+    Width = 152
+    Anchors = [akTop, akRight]
+    Caption = 'Из файла..'
+    Font.Height = -29
+    OnClick = btLoadClick
+    ParentFont = False
+    TabOrder = 6
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 140
+    Top = 260
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 140
+    Top = 170
+  end
+end

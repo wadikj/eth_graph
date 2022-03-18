@@ -1,0 +1,244 @@
+object frmEditActions: TfrmEditActions
+  Left = 294
+  Height = 512
+  Top = 216
+  Width = 1560
+  HorzScrollBar.Page = 657
+  HorzScrollBar.Range = 657
+  VertScrollBar.Page = 353
+  VertScrollBar.Range = 353
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Настройка быстрого ввода'
+  ClientHeight = 512
+  ClientWidth = 1560
+  DesignTimePPI = 120
+  Font.Height = -26
+  ShowHint = True
+  LCLVersion = '2.0.10.0'
+  object Label1: TLabel
+    Left = 10
+    Height = 36
+    Top = 10
+    Width = 203
+    Caption = 'Список действий'
+    Font.Height = -26
+    ParentColor = False
+    ParentFont = False
+  end
+  object lb: TListBox
+    Left = 10
+    Height = 391
+    Hint = 'Список созданных действий редактирования графика'
+    Top = 50
+    Width = 330
+    Anchors = [akTop, akLeft, akBottom]
+    Font.Height = -26
+    ItemHeight = 0
+    OnSelectionChange = lbSelectionChange
+    ParentFont = False
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 648
+    Height = 50
+    Hint = 'Закрывет форму редактирования действий'
+    Top = 440
+    Width = 154
+    Anchors = [akLeft, akBottom]
+    Cancel = True
+    Caption = 'Закрыть'
+    Font.Height = -26
+    ModalResult = 2
+    ParentFont = False
+    TabOrder = 5
+  end
+  object gbActions: TGroupBox
+    Left = 360
+    Height = 431
+    Top = 10
+    Width = 461
+    Caption = 'Редактирование действия'
+    ClientHeight = 390
+    ClientWidth = 457
+    Font.Height = -26
+    ParentFont = False
+    TabOrder = 3
+    object leName: TLabeledEdit
+      Left = 10
+      Height = 44
+      Hint = 'Название действия - отображается в меню'
+      Top = 30
+      Width = 430
+      EditLabel.Height = 36
+      EditLabel.Width = 430
+      EditLabel.Caption = 'Название действия'
+      EditLabel.ParentColor = False
+      EditLabel.ParentFont = False
+      EditLabel.Font.Height = -26
+      Font.Height = -26
+      ParentFont = False
+      TabOrder = 0
+      Text = 'leName'
+    end
+    object leKey: TLabeledEdit
+      Left = 10
+      Height = 44
+      Hint = 'Быстрая клавиша для вызова действия'#13#10'Можно использовать латинские буквы '#13#10'и названия служебгных клавиш, '#13#10'например, Ctrl+F5'
+      Top = 120
+      Width = 430
+      EditLabel.Height = 36
+      EditLabel.Width = 430
+      EditLabel.Caption = 'Быстрая клавиша'
+      EditLabel.ParentColor = False
+      EditLabel.ParentFont = False
+      EditLabel.Font.Height = -26
+      Font.Height = -26
+      ParentFont = False
+      TabOrder = 1
+      Text = 'leKey'
+    end
+    object leAction: TLabeledEdit
+      Left = 10
+      Height = 44
+      Hint = 'Скрипт для выполнения действия'
+      Top = 200
+      Width = 430
+      EditLabel.Height = 36
+      EditLabel.Width = 430
+      EditLabel.Caption = 'Действие'
+      EditLabel.ParentColor = False
+      EditLabel.ParentFont = False
+      EditLabel.Font.Height = -26
+      Font.Height = -26
+      ParentFont = False
+      TabOrder = 2
+      Text = 'leAction'
+    end
+    object Button2: TButton
+      Left = 10
+      Height = 50
+      Hint = 'Показывает справку по формату строки действия'
+      Top = 330
+      Width = 190
+      Caption = 'Справка'
+      Font.Height = -26
+      OnClick = Button2Click
+      ParentFont = False
+      TabOrder = 6
+    end
+    object Button3: TButton
+      Left = 300
+      Height = 50
+      Hint = 'Сохраняет отредактированное действие'
+      Top = 328
+      Width = 140
+      Caption = 'Сохранить'
+      Font.Height = -26
+      OnClick = Button3Click
+      ParentFont = False
+      TabOrder = 5
+    end
+    object cbUse: TCheckBox
+      Left = 10
+      Height = 40
+      Hint = 'Действие активно, будет вызвано при нажатии '#13#10'быстрой клавиши или выбора пункта меню'
+      Top = 250
+      Width = 190
+      Caption = 'Использовать'
+      Font.Height = -26
+      OnChange = cbUseChange
+      ParentFont = False
+      TabOrder = 3
+    end
+    object cbView: TCheckBox
+      Left = 10
+      Height = 40
+      Hint = 'Действие будет показао на панели QInput'
+      Top = 290
+      Width = 274
+      Caption = 'Показывать в QInput'
+      Font.Height = -26
+      ParentFont = False
+      TabOrder = 4
+    end
+  end
+  object mmHelp: TMemo
+    Left = 840
+    Height = 482
+    Hint = 'Справка по созланию строк действий'
+    Top = 10
+    Width = 710
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Font.Height = -26
+    Lines.Strings = (
+      'Формат строки действия'
+      '1. m:текстовое сообщение - выводит текстовое сообщение'
+      '2. f:N:параметры - заполняет ячейки таблицы параметрами '
+      'Если имеется выделение шириной более 1 ячейки, то действие выполняется только внутри выделенного элемента'
+      'Если ширина выделения 1 ячейка, то действие выполняется либо N раз, либо, если N=0, то действие выполняется до конца таблицы.'
+      'Если выделение растпространяется на несколько работников, то оно выполняется для каждого работника'
+      '3. Строка параметров имеет вид:'
+      '    S!X|...'
+      'где S-количество часов или строка, которая заносится в ячейку'
+      '      K-тип ячейки'
+      'если S=?, то выполняется запрос пользователю для ввода значения'
+      'если S=$, то значение берется из поля Шаблон-текст'
+      'если К не является числом, то его значение берется из поля Шаблон-тип'
+      'К может принимать следующие числовые значения'
+      '0 - неизвестно'
+      '1 - ночь начало'
+      '2 - ночь конец'
+      '3 - день'
+      '4 - охрана труда '
+      '5 - техническая учеба'
+      '6 - отпуск'
+      '7 - замещение'
+      '8 - выходной'
+      '9 - межсменный промежуток'
+      '10 - с ночи в ночь '
+      '11- другое,'
+      '12 - фактический выходной'
+      '13 - ежедневка'
+      '14 - медкомиссия'
+      '15 - обучение'
+      '16- выезд на линию'
+      '17 - зарезервировано'
+      '18 - больничный'
+      ''
+      'Для того, чтобы можно было использовать действие, при его задании должен быть установлен флаг "Использовать"'
+      'Если флаг "Показывать в  QInput" не установлен, то действие не будет показываться в панели быстрого ввода, одноа оно будет в меню и использовать его будет можно'
+    )
+    ParentFont = False
+    ReadOnly = True
+    ScrollBars = ssAutoVertical
+    TabOrder = 4
+    TabStop = False
+  end
+  object Button4: TButton
+    Left = 10
+    Height = 50
+    Hint = 'Создает новое действие'
+    Top = 451
+    Width = 150
+    Anchors = [akLeft, akBottom]
+    Caption = 'Новый'
+    Font.Height = -26
+    OnClick = Button4Click
+    ParentFont = False
+    TabOrder = 1
+  end
+  object Button5: TButton
+    Left = 190
+    Height = 50
+    Hint = 'Удаляет выбранное действие'
+    Top = 450
+    Width = 150
+    Anchors = [akLeft, akBottom]
+    Caption = 'Удалить'
+    Font.Height = -26
+    OnClick = Button5Click
+    ParentFont = False
+    TabOrder = 2
+  end
+end

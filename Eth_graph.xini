@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<options>
+  <data gTSSM="2,3,4,5,8,9,10,11" sCols="С,А" gColSM="13429996" gColVih="13882323" gShowMP="False" DaysLine="10" FirstDay="3" xMansCol="2" xMansRow="86" gFirstCol="190" gFontName="Tahoma" gFontSize="15" xFirstCol="3" xFirstRow="18" DefDataDir="E:\Projects\eth_graph\Data" DefImpYear="2021" DefImpMonth="6" FirstWorker="15" gSetOnlyUnk="False" gDefColWidth="48" xMansColName="5" xMansColTime="3" gDefRowHeight="38" gShowDefChars="False" AlwaysUseHours="False" DefWorkerCount="18" UseWeekendColors="True">
+    <OEDayRules>
+      <i AType="dtUnk" UseBG="False" UseStr="False" USeFont="False" Exported="False" OtherStr=""/>
+      <i AType="dtNightFirst" UseBG="False" UseStr="False" USeFont="False" Exported="True" OtherStr=""/>
+      <i AType="dtNightLast" UseBG="False" UseStr="False" USeFont="False" Exported="True" OtherStr=""/>
+      <i AType="dtDay" UseBG="False" UseStr="False" USeFont="False" Exported="True" OtherStr=""/>
+      <i AType="dtOHT" UseBG="False" UseStr="True" USeFont="False" Exported="True" OtherStr="ОХ"/>
+      <i AType="dtTU" UseBG="False" UseStr="True" USeFont="False" Exported="True" OtherStr="ТУ"/>
+      <i AType="dtOtp" UseBG="False" UseStr="True" USeFont="False" Exported="True" OtherStr="ОТ"/>
+      <i AType="dtZam" UseBG="True" UseStr="True" USeFont="True" Exported="True" OtherStr="зам"/>
+      <i AType="dtVih" UseBG="True" UseStr="True" USeFont="True" Exported="True" OtherStr="В"/>
+      <i AType="dtMP" UseBG="False" UseStr="False" USeFont="False" Exported="False" OtherStr=""/>
+      <i AType="dt2Night" UseBG="False" UseStr="True" USeFont="False" Exported="True" OtherStr="4 8"/>
+      <i AType="dtOther" UseBG="False" UseStr="False" USeFont="False" Exported="False" OtherStr=""/>
+      <i AType="dtFV" UseBG="False" UseStr="True" USeFont="False" Exported="True" OtherStr="ФВ"/>
+      <i AType="dtEzhedn" UseBG="False" UseStr="False" USeFont="False" Exported="True" OtherStr=""/>
+      <i AType="dtMed" UseBG="True" UseStr="True" USeFont="False" Exported="True" OtherStr="К"/>
+      <i AType="dtLearn" UseBG="False" UseStr="True" USeFont="False" Exported="True" OtherStr="У"/>
+      <i AType="dtLine" UseBG="False" UseStr="True" USeFont="False" Exported="True" OtherStr="Л"/>
+      <i AType="dtLocked" UseBG="False" UseStr="False" USeFont="False" Exported="False" OtherStr=""/>
+      <i AType="dtDisease" UseBG="False" UseStr="False" USeFont="False" Exported="False" OtherStr=""/>
+    </OEDayRules>
+    <gExtraCols>
+      <i Visible="True" DayTypes="[dtNightFirst,dtNightLast,dtDay,dtOtp,dt2Night,dtMed]" LongName="Смены" UseCount="False" ShortName="С" SavedHours="10!12|10!12"/>
+      <i Visible="True" DayTypes="[dtVih]" LongName="Выходные" UseCount="True" ShortName="В" SavedHours=""/>
+      <i Visible="True" DayTypes="[dtNightFirst,dtNightLast,dt2Night]" LongName="Ночные" UseCount="False" ShortName="Н" SavedHours="1!2|2!6|10!8"/>
+      <i Visible="True" DayTypes="[dtNightFirst,dtNightLast,dtDay,dtOHT,dtTU,dtOtp,dtZam,dt2Night,dtOther,dtEzhedn,dtMed,dtLearn,dtLine]" LongName="Все часы" UseCount="False" ShortName="А" SavedHours="10!12|10!12"/>
+    </gExtraCols>
+    <gExtraRows>
+      <i Visible="True" DayTypes="[dtNightFirst,dtNightLast,dtDay]" LongName="Часов в день" UseCount="False" ShortName="Часов в день" SavedHours=""/>
+      <i Visible="False" DayTypes="[dtDay]" LongName="Дневн смена" UseCount="True" ShortName="Дневн смена" SavedHours=""/>
+      <i Visible="False" DayTypes="[dtNightFirst]" LongName="Ночи начало" UseCount="True" ShortName="Ночи начало" SavedHours=""/>
+      <i Visible="False" DayTypes="[dtNightLast]" LongName="Ночи конец" UseCount="True" ShortName="Ночи конец" SavedHours=""/>
+    </gExtraRows>
+    <xTextOnly>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+      <i Txt="" Use="False"/>
+    </xTextOnly>
+  </data>
+  <strings>
+    <workers>
+      <s v="Абрамов А.А"/>
+      <s v="Борисов Б.Б"/>
+      <s v="Васильев В.В."/>
+      <s v="Галкин Г.Г."/>
+      <s v="Данилов Д.Д."/>
+      <s v="Ефремов  Е.Е"/>
+      <s v="Иванов И.И."/>
+      <s v="Костин К.К."/>
+      <s v="Лазарев Л.Л."/>
+      <s v="Михайленко М.М."/>
+      <s v="Николаев Н.Н."/>
+      <s v="Олегов О.О."/>
+      <s v="Петров П.П."/>
+      <s v="Романов Р.Р."/>
+      <s v="Сидоров С.С."/>
+      <s v="Тимофеев Т.Т."/>
+      <s v="Федоров Ф.Ф."/>
+      <s v="Харитонов Х.Х."/>
+    </workers>
+    <dayhours0/>
+    <dayhours1>
+      <s v="4=19:30-24:00"/>
+    </dayhours1>
+    <dayhours2>
+      <s v="8=00:00-7:30"/>
+    </dayhours2>
+    <dayhours3>
+      <s v="1=7:30-8:30"/>
+      <s v="10=7:30-17:30"/>
+      <s v="11=7:30-18:30"/>
+      <s v="12=7:30-19:30"/>
+      <s v="2=7:30-9:30"/>
+      <s v="3=7:30-10:30"/>
+      <s v="4=7:30-11:30"/>
+      <s v="5=7:30-12:30"/>
+      <s v="6=7:30-13:30"/>
+      <s v="7=7:30-14:30"/>
+      <s v="8=7:30-15:30"/>
+      <s v="9=7:30-16:30"/>
+    </dayhours3>
+    <dayhours4>
+      <s v="2=7:30-9:30"/>
+      <s v="3=7:30-10:30"/>
+      <s v="4=7:30-11:30"/>
+      <s v="5=7:30-12:30"/>
+      <s v="6=7:30-13:30"/>
+      <s v="7=7:30-14:30"/>
+      <s v="8=7:30-15:30"/>
+    </dayhours4>
+    <dayhours5>
+      <s v="2=7:30-9:30"/>
+      <s v="3=7:30-10:30"/>
+      <s v="4=7:30-11:30"/>
+      <s v="5=7:30-12:30"/>
+      <s v="6=7:30-13:30"/>
+      <s v="7=7:30-14:30"/>
+      <s v="8=7:30-15:30"/>
+    </dayhours5>
+    <dayhours6>
+      <s v="="/>
+      <s v="12="/>
+      <s v="8="/>
+      <s v="от="/>
+    </dayhours6>
+    <dayhours7>
+      <s v="6=7:15-14:15"/>
+      <s v="7=7:15-15:15"/>
+      <s v="8=7:15-16:15"/>
+    </dayhours7>
+    <dayhours8>
+      <s v="В="/>
+    </dayhours8>
+    <dayhours9>
+      <s v="="/>
+      <s v="МП="/>
+      <s v="мп="/>
+    </dayhours9>
+    <dayhours10/>
+    <dayhours11>
+      <s v="4=8:00-12:00"/>
+      <s v="8=8:00-17:00"/>
+    </dayhours11>
+    <dayhours12>
+      <s v="="/>
+      <s v="ФВ="/>
+      <s v="фв="/>
+    </dayhours12>
+    <daystyles>
+      <s v="16776960,0,0,"/>
+      <s v="16777215,0,0,"/>
+      <s v="16777215,0,0,"/>
+      <s v="16777215,0,0,"/>
+      <s v="8454143,0,0,"/>
+      <s v="6745759,0,0,"/>
+      <s v="16777215,0,0,ОТ"/>
+      <s v="65280,0,0,"/>
+      <s v="16777215,0,1,В"/>
+      <s v="16777215,0,0,"/>
+      <s v="16777215,0,0,4 8"/>
+      <s v="12632256,0,4,"/>
+      <s v="16777215,0,0,ФВ"/>
+      <s v="16777215,0,0,"/>
+      <s v="16755370,0,4,К"/>
+      <s v="65280,0,0,"/>
+      <s v="16711935,0,0,"/>
+      <s v="16744576,0,0,R"/>
+      <s v="16777215,0,0,"/>
+    </daystyles>
+    <actions>
+      <s v="День@90@f:1:12!3@1@1"/>
+      <s v="Д/Н/48 П@16500@f:0:12!3|4!1|8!2|!9@1@0"/>
+      <s v="Шаблон@81@f:1:$!$@1@1"/>
+      <s v="Ночь@88@f:1:4!1|8!2@1@1"/>
+      <s v="МП@83@f:1:!9@1@1"/>
+      <s v="Выходной@87@f:1:В!8@1@1"/>
+    </actions>
+    <dayhours13/>
+    <dayhours14>
+      <s v="4=8:00-12:00"/>
+      <s v="8=8:00-16:00"/>
+    </dayhours14>
+    <dayhours15>
+      <s v="7=8:00-15:00"/>
+      <s v="8=8:00-16:00"/>
+    </dayhours15>
+    <dayhours16>
+      <s v="4=8:00-12:00"/>
+      <s v="5=8:00-13:00"/>
+      <s v="6=8:00-14:00"/>
+      <s v="7=8:00-15:00"/>
+      <s v="8=8:00-16:00"/>
+    </dayhours16>
+    <dayhours17/>
+    <files/>
+    <folders/>
+    <mru>
+      <s v="C:\GIT\eth_graph\Examples\март 2022 план.gr"/>
+      <s v="C:\GIT\eth_graph\Examples\январь 2022 план.gr"/>
+      <s v="C:\GIT\eth_graph\Examples\февраль 2022 план.gr"/>
+    </mru>
+    <dayhours18/>
+  </strings>
+  <userdata/>
+  <forms>
+    <frmQuickInput Top="556" Left="483" Width="712" Height="50" BHeight="25">
+      <Font Name="default" Size="14"/>
+    </frmQuickInput>
+    <frmSumm Top="22" Left="18" Width="1048" Height="932" LastMonth="3" FirstMonth="1"/>
+    <frmMemo Top="36" Left="-1230" Width="852" Height="300"/>
+    <frmMemo_1 Top="159" Left="-990" Width="744" Height="546"/>
+    <frmEditManList Top="140" Left="851" Width="475" Height="581"/>
+  </forms>
+</options>

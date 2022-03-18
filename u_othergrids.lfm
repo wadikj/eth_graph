@@ -1,0 +1,171 @@
+object frmGridOpts: TfrmGridOpts
+  Left = 629
+  Height = 368
+  Top = 261
+  Width = 454
+  BorderStyle = bsDialog
+  Caption = 'Настройки сетки'
+  ClientHeight = 368
+  ClientWidth = 454
+  DesignTimePPI = 120
+  Font.Height = -26
+  OnClose = FormClose
+  ShowHint = True
+  LCLVersion = '2.0.10.0'
+  object Label1: TLabel
+    Left = 10
+    Height = 36
+    Top = 10
+    Width = 157
+    Caption = 'Высота строк'
+    Font.Height = -26
+    ParentColor = False
+    ParentFont = False
+  end
+  object seRowHeight: TSpinEdit
+    Left = 10
+    Height = 44
+    Hint = 'Высота строк сетки графика'
+    Top = 50
+    Width = 165
+    Font.Height = -26
+    MinValue = 10
+    ParentFont = False
+    TabOrder = 0
+    Value = 20
+  end
+  object Label2: TLabel
+    Left = 10
+    Height = 36
+    Top = 100
+    Width = 183
+    Caption = 'Ширина колон.'
+    Font.Height = -26
+    ParentColor = False
+    ParentFont = False
+  end
+  object seColWidth: TSpinEdit
+    Left = 10
+    Height = 44
+    Hint = 'Ширина колонок сетки графика'
+    Top = 140
+    Width = 165
+    Font.Height = -26
+    ParentFont = False
+    TabOrder = 1
+  end
+  object Label3: TLabel
+    Left = 10
+    Height = 36
+    Top = 190
+    Width = 200
+    Caption = 'Ширина первой '
+    Font.Height = -26
+    ParentColor = False
+    ParentFont = False
+  end
+  object seFirstWidth: TSpinEdit
+    Left = 10
+    Height = 44
+    Hint = 'Ширина первой колонки сетки '#13#10'графика (с именами сотрудников)'
+    Top = 230
+    Width = 165
+    Font.Height = -26
+    MaxValue = 300
+    MinValue = 50
+    ParentFont = False
+    TabOrder = 2
+    Value = 50
+  end
+  object Button1: TButton
+    Left = 48
+    Height = 51
+    Hint = 'Сохраняет и применяет изменения'
+    Top = 300
+    Width = 160
+    Caption = 'Ок'
+    Font.Height = -26
+    ModalResult = 1
+    ParentFont = False
+    TabOrder = 6
+  end
+  object Button2: TButton
+    Left = 250
+    Height = 51
+    Hint = 'Отмена операции'
+    Top = 300
+    Width = 160
+    Cancel = True
+    Caption = 'Отмена'
+    Font.Height = -26
+    ModalResult = 2
+    ParentFont = False
+    TabOrder = 7
+  end
+  object Button3: TButton
+    Left = 210
+    Height = 51
+    Hint = 'Шрифт сетки графика'
+    Top = 20
+    Width = 220
+    Caption = 'Шрифт сетки'
+    Default = True
+    Font.Height = -26
+    OnClick = Button3Click
+    ParentFont = False
+    TabOrder = 3
+  end
+  object Label4: TLabel
+    Left = 210
+    Height = 36
+    Top = 120
+    Width = 184
+    Caption = 'Высота шрифта'
+    Font.Height = -26
+    ParentColor = False
+    ParentFont = False
+  end
+  object seFontSize: TSpinEdit
+    Left = 210
+    Height = 44
+    Hint = 'Высота шрифта сетки графика'
+    Top = 160
+    Width = 215
+    Font.Height = -26
+    MaxValue = 40
+    MinValue = 5
+    OnChange = seFontSizeChange
+    ParentFont = False
+    TabOrder = 4
+    Value = 16
+  end
+  object Panel1: TPanel
+    Left = 210
+    Height = 62
+    Top = 209
+    Width = 220
+    Caption = 'Образец'
+    Font.Height = -26
+    ParentFont = False
+    TabOrder = 5
+  end
+  object lbFontName: TLabel
+    Left = 210
+    Height = 36
+    Top = 80
+    Width = 141
+    Caption = 'lbFontName'
+    Font.Height = -26
+    ParentColor = False
+    ParentFont = False
+  end
+  object fd: TFontDialog
+    Title = 'Выбрать шрифт сетки графика'
+    MinFontSize = 5
+    MaxFontSize = 40
+    Options = [fdNoStyleSel, fdLimitSize]
+    PreviewText = 'Образец'
+    Left = 390
+    Top = 95
+  end
+end

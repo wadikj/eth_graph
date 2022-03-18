@@ -1,0 +1,29 @@
+object frmMemo: TfrmMemo
+  Left = 1058
+  Height = 300
+  Top = 341
+  Width = 400
+  BorderStyle = bsSizeToolWin
+  Caption = 'Анализ графика'
+  ClientHeight = 300
+  ClientWidth = 400
+  DesignTimePPI = 120
+  Font.Height = -26
+  OnClose = FormClose
+  OnCreate = FormCreate
+  LCLVersion = '2.0.10.0'
+  object Memo1: TMemo
+    Left = 0
+    Height = 300
+    Top = 0
+    Width = 400
+    Align = alClient
+    Font.Height = -26
+    Lines.Strings = (
+      'Memo1'
+    )
+    ParentFont = False
+    ScrollBars = ssAutoVertical
+    TabOrder = 0
+  end
+end

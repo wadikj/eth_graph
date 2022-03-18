@@ -1,0 +1,52 @@
+object frmQuickInput: TfrmQuickInput
+  Left = 525
+  Height = 149
+  Top = 558
+  Width = 695
+  BorderStyle = bsSizeToolWin
+  Caption = 'QInput'
+  ClientHeight = 149
+  ClientWidth = 695
+  DesignTimePPI = 120
+  Font.Height = -24
+  FormStyle = fsStayOnTop
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  LCLVersion = '2.0.10.0'
+  object fp: TFlowPanel
+    Left = 0
+    Height = 149
+    Top = 0
+    Width = 695
+    Align = alClient
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    ControlList = <    
+      item
+        Control = Button1
+        WrapAfter = waAuto
+        Index = 0
+      end>
+    FlowLayout = tlTop
+    FlowStyle = fsLeftRightTopBottom
+    Font.Height = -24
+    ParentFont = False
+    TabOrder = 0
+    object Button1: TButton
+      Left = 0
+      Height = 31
+      Top = 0
+      Width = 169
+      Anchors = []
+      Caption = 'Button1'
+      Font.Height = -24
+      ParentFont = False
+      TabOrder = 0
+    end
+  end
+  object ActionList1: TActionList
+    Left = 70
+    Top = 150
+  end
+end

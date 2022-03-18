@@ -1,0 +1,98 @@
+object frmEditOther: TfrmEditOther
+  Left = 556
+  Height = 528
+  Top = 180
+  Width = 692
+  BorderStyle = bsDialog
+  Caption = 'Прочие цвета сетки'
+  ClientHeight = 528
+  ClientWidth = 692
+  DesignTimePPI = 120
+  Font.Height = -26
+  ShowHint = True
+  LCLVersion = '2.0.10.0'
+  object cbVihColor: TColorButton
+    Left = 350
+    Height = 48
+    Hint = 'Фон для закраски выходных дней'
+    Top = 10
+    Width = 330
+    BorderWidth = 2
+    ButtonColorSize = 16
+    ButtonColor = clBlack
+    Caption = 'Фон выходных'
+    Font.Height = -28
+    ParentFont = False
+  end
+  object cbSmcolor: TColorButton
+    Left = 350
+    Height = 48
+    Hint = 'Фон клеток графика для сотрудников, работающих в '#13#10'четные смены. У сотрудников, работающих в НЕчетные '#13#10'смены, фон оснается белый'
+    Top = 70
+    Width = 330
+    BorderWidth = 2
+    ButtonColorSize = 16
+    ButtonColor = clBlack
+    Caption = 'Фон четных смен'
+    Font.Height = -28
+    ParentFont = False
+  end
+  object clbMans: TCheckListBox
+    Left = 10
+    Height = 470
+    Hint = 'Список сотрудников. Выделенные сотрудники '#13#10'считаются работающиси в четных сменах'
+    Top = 50
+    Width = 330
+    Font.Height = -26
+    ItemHeight = 0
+    ParentFont = False
+    TabOrder = 0
+  end
+  object Label1: TLabel
+    Left = 10
+    Height = 36
+    Top = 10
+    Width = 173
+    Caption = 'Четные смены'
+    Font.Height = -26
+    ParentColor = False
+    ParentFont = False
+  end
+  object btSaveGlobal: TButton
+    Left = 350
+    Height = 56
+    Hint = 'Сохраняет цвета в настройках. Они будут '#13#10'применяться к новым графикам'
+    Top = 390
+    Width = 330
+    Caption = 'В настройки'
+    Font.Height = -28
+    OnClick = btSaveGlobalClick
+    ParentFont = False
+    TabOrder = 1
+  end
+  object btClose: TButton
+    Left = 350
+    Height = 56
+    Hint = 'Закрывает форму без сохранения изменений'
+    Top = 456
+    Width = 330
+    Cancel = True
+    Caption = 'Закрыть'
+    Font.Height = -28
+    ModalResult = 2
+    ParentFont = False
+    TabOrder = 2
+  end
+  object btSaveLoc: TButton
+    Left = 350
+    Height = 56
+    Hint = 'Применяет цвета к такущему открытому графику'
+    Top = 320
+    Width = 330
+    Caption = 'В график'
+    Font.Height = -28
+    OnClick = btSaveLocClick
+    ParentFont = False
+    TabOrder = 3
+  end
+end

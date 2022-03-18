@@ -1,0 +1,97 @@
+object frmSelExcelDoc: TfrmSelExcelDoc
+  Left = 519
+  Height = 365
+  Top = 267
+  Width = 630
+  BorderStyle = bsDialog
+  Caption = 'Выбор открытого документа Excel'
+  ClientHeight = 365
+  ClientWidth = 630
+  Font.Height = -21
+  OnClose = FormClose
+  OnCreate = FormCreate
+  ShowHint = True
+  LCLVersion = '2.0.10.0'
+  object Label3: TLabel
+    Left = 8
+    Height = 25
+    Top = 0
+    Width = 264
+    Caption = 'Открытые документы Excel'
+    Font.Height = -21
+    ParentColor = False
+    ParentFont = False
+  end
+  object lb: TListBox
+    Left = 8
+    Height = 216
+    Hint = 'Список открытых в данный момент файлов Экселя.'#13#10'Все операции проводятся над текущим выделенным '#13#10'файлом.'
+    Top = 32
+    Width = 614
+    Anchors = [akTop, akLeft, akRight]
+    Font.Height = -21
+    ItemHeight = 0
+    ParentFont = False
+    TabOrder = 0
+  end
+  object btLoadIntGraph: TButton
+    Left = 224
+    Height = 45
+    Hint = 'Переходит в сохраненный список папок для открытия'
+    Top = 256
+    Width = 184
+    Caption = 'Открыть папку...'
+    Font.Height = -21
+    OnClick = btLoadIntGraphClick
+    ParentFont = False
+    TabOrder = 1
+  end
+  object btLoadIntGraph1: TButton
+    Left = 8
+    Height = 45
+    Hint = 'Переходит в сохраненный список документов для открытия'
+    Top = 256
+    Width = 208
+    Caption = 'Открыть документ...'
+    Font.Height = -21
+    OnClick = btLoadIntGraph1Click
+    ParentFont = False
+    TabOrder = 2
+  end
+  object btLoadIntGraph2: TButton
+    Left = 272
+    Height = 45
+    Hint = 'Загружает текущий файл'
+    Top = 312
+    Width = 200
+    Caption = 'Выбрать документ'
+    Font.Height = -21
+    OnClick = btLoadIntGraph2Click
+    ParentFont = False
+    TabOrder = 3
+  end
+  object btLoadIntGraph3: TButton
+    Left = 488
+    Height = 45
+    Hint = 'Загружает текущий файл'
+    Top = 312
+    Width = 136
+    Caption = 'Отмена'
+    Font.Height = -21
+    ModalResult = 2
+    ParentFont = False
+    TabOrder = 4
+  end
+  object btLoadIntGraph4: TButton
+    Left = 416
+    Height = 45
+    Hint = 'Загружает текущий файл'
+    Top = 256
+    Width = 208
+    Caption = 'Обновить список'
+    Font.Height = -21
+    OnClick = btLoadIntGraph4Click
+    ParentFont = False
+    TabOrder = 5
+  end
+end
