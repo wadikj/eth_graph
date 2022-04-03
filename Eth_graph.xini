@@ -191,23 +191,28 @@
       <s v="8=8:00-16:00"/>
     </dayhours16>
     <dayhours17/>
-    <files/>
-    <folders/>
+    <files>
+      <s v="C:\ETH_GRAPH\Templates\график бланк.xlsx"/>
+      <s v="C:\ETH_GRAPH\Templates\ГРАФИК именной бланк.xlsx"/>
+    </files>
+    <folders>
+      <s v="C:\ETH_GRAPH\Templates"/>
+    </folders>
     <mru>
-      <s v="C:\GIT\eth_graph\Examples\март 2022 план.gr"/>
-      <s v="C:\GIT\eth_graph\Examples\январь 2022 план.gr"/>
-      <s v="C:\GIT\eth_graph\Examples\февраль 2022 план.gr"/>
+      <s v="C:\ETH_GRAPH\Examples\январь 2022 план.gr"/>
+      <s v="C:\ETH_GRAPH\Examples\март 2022 план.gr"/>
+      <s v="C:\ETH_GRAPH\Examples\февраль 2022 план.gr"/>
     </mru>
     <dayhours18/>
   </strings>
   <userdata/>
   <forms>
-    <frmQuickInput Top="556" Left="483" Width="712" Height="50" BHeight="25">
+    <frmQuickInput Top="892" Left="827" Width="712" Height="32" BHeight="25">
       <Font Name="default" Size="14"/>
     </frmQuickInput>
-    <frmSumm Top="22" Left="18" Width="1048" Height="932" LastMonth="3" FirstMonth="1"/>
+    <frmSumm Top="10" Left="782" Width="1017" Height="988" LastMonth="3" FirstMonth="1"/>
     <frmMemo Top="36" Left="-1230" Width="852" Height="300"/>
     <frmMemo_1 Top="159" Left="-990" Width="744" Height="546"/>
-    <frmEditManList Top="140" Left="851" Width="475" Height="581"/>
+    <frmEditManList Top="140" Left="851" Width="475" Height="774"/>
   </forms>
 </options>
