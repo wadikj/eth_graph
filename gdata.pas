@@ -110,12 +110,6 @@ var Wrk,Day,I:Integer;
     OLen,TLen:integer;
     di:TDayItem;
 begin
-  //по идее надо переделать на следующее
-  //при экспорте вводим, какие данные выводить
-  //какие типы выводить
-  //и условие на вывод
-  //например, количество раб часов не равно чему то
-  //чобы настраивалось
   sd:=GetSD;
   for Day:=1 to MonthDays do begin
     O:=False;T:=False;
@@ -300,7 +294,7 @@ begin
   for Wrk:=0 to WorkerCount-1 do begin
     for Day:=1 to MonthDays do begin
       S:=GetExpInfo(Wrk,Day,S1,S2,S3);
-      BR:=Options.xFirstRow+Wrk*3;                         //WideString(UTF8Decode('выхи'))
+      BR:=Options.xFirstRow+Wrk*3;
       Sh.Cells[BR,Day+Options.xFirstCol-1].Value:=WideString(UTF8Decode(S1));
       Sh.Cells[BR+1,Day+Options.xFirstCol-1].Value:=WideString(UTF8Decode(''''+S2));
       Sh.Cells[BR+2,Day+Options.xFirstCol-1].Value:=WideString(UTF8Decode(''''+S3));
@@ -328,7 +322,6 @@ var Sh:OleVariant;
     Wrk,Day:Integer;
     S1:string;
     BR:Integer;
-    //SL:TStringList;
     ei:TOEItem;
     di:TDayItem;
     bg:TCellBg;
@@ -414,6 +407,9 @@ begin
   end;
   SL:=TStringList.Create;
   SL.LoadFromFile(AFileName);
+  _SMINFO:='';
+  M:=0;
+  WCount:=0;
   for W:=0 to SL.Count-1 do begin
     S:=SL[W];
     S1:=DivStr(S,'=');
@@ -535,13 +531,11 @@ end;
 
 function TGraphData.GetCellValue(AWorker, ADay: Integer): string;
 begin
-  ////!!!!отображение некоторых типов в графике прибиваем гвоздями - убрать!!!
   Result:=Options.FDayStyles[FItems[Aworker].Days[ADay].FType].FTypeStr;
   if Result='' then
     Result:=FItems[Aworker].Days[ADay].FHours;
   if Options.gShowMP and (FItems[Aworker].Days[ADay].FType=dtMP) then
     Result:=Result+'МП';
-
   if Options.gShowDefChars then begin
     if FItems[Aworker].Days[ADay].FType in [dtNightFirst, dtNightLast, dtDay,
       dtOHT, dtTU, dtZam, dtOther,dtMed] then
@@ -556,6 +550,8 @@ end;
 
 function TGraphData.GetCellInfo(AWorker, ADay: Integer): TDayItem;
 begin
+  Result.FHours:='';
+  Result.FType:=dtUnk;
   if (AWorker>High(FItems)) or (ADay>31) or (AWorker<0) or (ADay <0) then
     Exit;
   Result:=FItems[AWorker].Days[ADay];

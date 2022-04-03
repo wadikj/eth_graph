@@ -255,6 +255,7 @@ object frmTable: TfrmTable
       end
       object miAnyFlags: TMenuItem
         Caption = 'Прочие флаги'
+        OnClick = miAnyFlagsClick
       end
       object N6: TMenuItem
         Caption = '-'

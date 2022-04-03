@@ -12,11 +12,11 @@ type
   { TfrmEditActions }
 
   TfrmEditActions = class(TForm)
-    Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
-    Button4: TButton;
-    Button5: TButton;
+    btClose: TButton;
+    btHelp: TButton;
+    btSave: TButton;
+    btNew: TButton;
+    btDel: TButton;
     cbUse: TCheckBox;
     cbView: TCheckBox;
     gbActions: TGroupBox;
@@ -26,10 +26,10 @@ type
     leAction: TLabeledEdit;
     lb: TListBox;
     mmHelp: TMemo;
-    procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
-    procedure Button5Click(Sender: TObject);
+    procedure btHelpClick(Sender: TObject);
+    procedure btSaveClick(Sender: TObject);
+    procedure btNewClick(Sender: TObject);
+    procedure btDelClick(Sender: TObject);
     procedure cbUseChange(Sender: TObject);
     procedure lbSelectionChange(Sender: TObject; User: boolean);
   private
@@ -54,7 +54,7 @@ function EditActions: boolean;
 begin
   Result:=True;
   Application.CreateForm(TfrmEditActions,frmEditActions);
-  frmEditActions.Button2.Click;
+  frmEditActions.btHelp.Click;
   frmEditActions.InitList;
   if frmEditActions.lb.Count<>0 then
     frmEditActions.lb.ItemIndex:=0;
@@ -65,12 +65,12 @@ end;
 
 { TfrmEditActions }
 
-procedure TfrmEditActions.Button3Click(Sender: TObject);
+procedure TfrmEditActions.btSaveClick(Sender: TObject);
 begin
   StoreItem;
 end;
 
-procedure TfrmEditActions.Button2Click(Sender: TObject);
+procedure TfrmEditActions.btHelpClick(Sender: TObject);
 var BasePT:Integer;
 begin
   BasePT:=gbActions.Left+gbActions.Width+5;
@@ -81,12 +81,12 @@ begin
   end;
 end;
 
-procedure TfrmEditActions.Button4Click(Sender: TObject);
+procedure TfrmEditActions.btNewClick(Sender: TObject);
 begin
   NewItem;
 end;
 
-procedure TfrmEditActions.Button5Click(Sender: TObject);
+procedure TfrmEditActions.btDelClick(Sender: TObject);
 begin
   DeleteItem;
 end;

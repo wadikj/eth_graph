@@ -38,7 +38,7 @@ object frmHours: TfrmHours
   object lbTypes: TListBox
     Left = 8
     Height = 624
-    Hint = 'Список доступных флагов в программе'
+    Hint = 'Список доступных типов дней в программе'
     Top = 48
     Width = 389
     ItemHeight = 0

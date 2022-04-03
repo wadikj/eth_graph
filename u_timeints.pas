@@ -36,7 +36,6 @@ type
     procedure lvTimesSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
   private
-    //
     FPrevType:Integer;
     function FindItem(AText:string):TListItem;
   public

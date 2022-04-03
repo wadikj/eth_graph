@@ -1,7 +1,7 @@
 object frmEditActions: TfrmEditActions
-  Left = 294
+  Left = 182
   Height = 512
-  Top = 216
+  Top = 127
   Width = 1560
   HorzScrollBar.Page = 657
   HorzScrollBar.Range = 657
@@ -39,11 +39,11 @@ object frmEditActions: TfrmEditActions
     ParentFont = False
     TabOrder = 0
   end
-  object Button1: TButton
-    Left = 648
+  object btClose: TButton
+    Left = 668
     Height = 50
     Hint = 'Закрывет форму редактирования действий'
-    Top = 440
+    Top = 450
     Width = 154
     Anchors = [akLeft, akBottom]
     Cancel = True
@@ -115,7 +115,7 @@ object frmEditActions: TfrmEditActions
       TabOrder = 2
       Text = 'leAction'
     end
-    object Button2: TButton
+    object btHelp: TButton
       Left = 10
       Height = 50
       Hint = 'Показывает справку по формату строки действия'
@@ -123,11 +123,11 @@ object frmEditActions: TfrmEditActions
       Width = 190
       Caption = 'Справка'
       Font.Height = -26
-      OnClick = Button2Click
+      OnClick = btHelpClick
       ParentFont = False
       TabOrder = 6
     end
-    object Button3: TButton
+    object btSave: TButton
       Left = 300
       Height = 50
       Hint = 'Сохраняет отредактированное действие'
@@ -135,7 +135,7 @@ object frmEditActions: TfrmEditActions
       Width = 140
       Caption = 'Сохранить'
       Font.Height = -26
-      OnClick = Button3Click
+      OnClick = btSaveClick
       ParentFont = False
       TabOrder = 5
     end
@@ -167,47 +167,44 @@ object frmEditActions: TfrmEditActions
     Left = 840
     Height = 482
     Hint = 'Справка по созланию строк действий'
-    Top = 10
+    Top = 18
     Width = 710
     Anchors = [akTop, akLeft, akRight, akBottom]
     Font.Height = -26
     Lines.Strings = (
       'Формат строки действия'
-      '1. m:текстовое сообщение - выводит текстовое сообщение'
-      '2. f:N:параметры - заполняет ячейки таблицы параметрами '
-      'Если имеется выделение шириной более 1 ячейки, то действие выполняется только внутри выделенного элемента'
+      '  f:N:параметры - заполняет ячейки таблицы параметрами'
+      'Если имеется выделенный блок шириной более 1 ячейки, то действие выполняется только внутри выделенного блока'
       'Если ширина выделения 1 ячейка, то действие выполняется либо N раз, либо, если N=0, то действие выполняется до конца таблицы.'
-      'Если выделение растпространяется на несколько работников, то оно выполняется для каждого работника'
-      '3. Строка параметров имеет вид:'
+      'Если выделено несколько строк, то действие выполняется для каждой строки'
+      '  Строка параметров имеет вид:'
       '    S!X|...'
       'где S-количество часов или строка, которая заносится в ячейку'
-      '      K-тип ячейки'
+      '    X-тип ячейки'
       'если S=?, то выполняется запрос пользователю для ввода значения'
-      'если S=$, то значение берется из поля Шаблон-текст'
-      'если К не является числом, то его значение берется из поля Шаблон-тип'
-      'К может принимать следующие числовые значения'
-      '0 - неизвестно'
-      '1 - ночь начало'
-      '2 - ночь конец'
-      '3 - день'
-      '4 - охрана труда '
-      '5 - техническая учеба'
-      '6 - отпуск'
-      '7 - замещение'
-      '8 - выходной'
-      '9 - межсменный промежуток'
-      '10 - с ночи в ночь '
-      '11- другое,'
-      '12 - фактический выходной'
-      '13 - ежедневка'
-      '14 - медкомиссия'
-      '15 - обучение'
-      '16- выезд на линию'
-      '17 - зарезервировано'
-      '18 - больничный'
+      'если S=$, то значение берется из поля "Шаблон-текст"'
+      'если X не является числом, то его значение берется из поля "Шаблон-тип"'
+      'Таким образом, строка "f:$!$" задает значение для текущей ячейки, взятое из полей "Шаблон-текст" и "Шаблон-тип".'
+      ''
+      'S может принимать следующие числовые значения'
+      '!!!'
+      '0 - неизвестно tUnk,'
+      '1 - ночь начало .dtNightFirst,'
+      '2 - ночь конец dtNightLast,'
+      '3 - день dtDay,'
+      '4 - охрана трудаdtOHT,'
+      '5 - техническая учеба dtTU,'
+      '6 - отпуск dtOtp,'
+      '7 - замещение dtZam,'
+      '8 - выходной dtVih,'
+      '9 - межсменный промежуток dtMP,'
+      '10 - с ночи в нось dt2Night,'
+      '11- другое dtOther,'
+      '12 - фактический выходнойdtFV'
+      '***'
       ''
       'Для того, чтобы можно было использовать действие, при его задании должен быть установлен флаг "Использовать"'
-      'Если флаг "Показывать в  QInput" не установлен, то действие не будет показываться в панели быстрого ввода, одноа оно будет в меню и использовать его будет можно'
+      'Если флаг "Показывать в  QInput" не установлен, то действие не будет показываться в панели быстрого ввода, однако оно будет в меню и использовать его будет можно'
     )
     ParentFont = False
     ReadOnly = True
@@ -215,7 +212,7 @@ object frmEditActions: TfrmEditActions
     TabOrder = 4
     TabStop = False
   end
-  object Button4: TButton
+  object btNew: TButton
     Left = 10
     Height = 50
     Hint = 'Создает новое действие'
@@ -224,11 +221,11 @@ object frmEditActions: TfrmEditActions
     Anchors = [akLeft, akBottom]
     Caption = 'Новый'
     Font.Height = -26
-    OnClick = Button4Click
+    OnClick = btNewClick
     ParentFont = False
     TabOrder = 1
   end
-  object Button5: TButton
+  object btDel: TButton
     Left = 190
     Height = 50
     Hint = 'Удаляет выбранное действие'
@@ -237,7 +234,7 @@ object frmEditActions: TfrmEditActions
     Anchors = [akLeft, akBottom]
     Caption = 'Удалить'
     Font.Height = -26
-    OnClick = Button5Click
+    OnClick = btDelClick
     ParentFont = False
     TabOrder = 2
   end

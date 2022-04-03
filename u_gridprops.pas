@@ -100,7 +100,8 @@ procedure TfrmGrprops.sgSelection(Sender: TObject; aCol, aRow: Integer);
 var dt:TDayType;
     I:Integer;
 begin
-  if (aCol=0) or (aRow=0) then Exit;
+  if aCol=0 then Exit;
+  if aRow=0 then Exit;
   I:=aRow-1;
   if I>Integer(High(TDayType)) then Exit;
   dt:=TDayType(I);

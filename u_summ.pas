@@ -223,7 +223,7 @@ end;
 procedure TfrmSumm.FormCreate(Sender: TObject);
 begin
   FFirstMonth:=1;
-  FLastMonth:=3;
+  FLastMonth:=5;
   FWList:=TWorkerList.Create;
   Options.LoadComponent('Left,Top,Width,Height,FirstMonth,LastMonth',Self);
   FWList.ColNames:=Options.sCols;
@@ -260,7 +260,7 @@ end;
 procedure TfrmSumm.CheckDataYear;
 var XYear:Integer;
 begin
-  //проверяет, какой год открыт в графике, и если не совпадлает с текущим для таблицы, то
+  //проверяет, какой год открыт в графике, и если не совпадает с текущим для таблицы, то
   //переоткрывеает нужные данные
   if frmTable.GraphData=nil then Exit;
   XYear:=frmTable.GraphData.CurrYear;

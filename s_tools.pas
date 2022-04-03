@@ -110,9 +110,9 @@ begin
   Start:=1;
   if (Length(S)>1) and (S[1]='-') then begin// ведущий - у отрицательных чисел
     Start:=2;
-    Result:=True;
+    //Result:=True;
   end;
-  for I:=1 to Length(S) do begin
+  for I:=Start to Length(S) do begin
     Result:=S[I] in ['0'..'9'];
     if not Result then Break;
   end;

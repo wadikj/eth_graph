@@ -107,6 +107,7 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
     procedure miAboutClick(Sender: TObject);
+    procedure miAnyFlagsClick(Sender: TObject);
     procedure miReadmeClick(Sender: TObject);
     procedure miSummClick(Sender: TObject);
     procedure miOtherHoursClick(Sender: TObject);
@@ -176,7 +177,7 @@ type
     procedure NewGraph;
     procedure SaveGraph;
     procedure SaveAs;
-    function LoadGraph(AFileName:string):boolean;
+    procedure LoadGraph(AFileName:string);
     procedure LoadMRU;
     procedure AddToMRU(AFileName:string);
     procedure UpdateFormCaption;
@@ -335,7 +336,7 @@ var I,Last:Integer; // последний день, до которого зап
     Rep:boolean;
 begin
   //тут пофиг, заполняем от начала до конца переданного участка укзанной последовательностью
-  //чтобы было хорошо, если последовательность из несколькох клеочек, и у нас выделен 1 день
+  //чтобы было хорошо, если последовательность из несколькох клеточек, и у нас выделен 1 день
   // то цикл должен быть пока не закончится последовательность
 
   //если Last <1, то заполняем до конца сетки
@@ -463,6 +464,11 @@ end;
 procedure TfrmTable.miAboutClick(Sender: TObject);
 begin
   ShowAbout;
+end;
+
+procedure TfrmTable.miAnyFlagsClick(Sender: TObject);
+begin
+
 end;
 
 procedure TfrmTable.miReadmeClick(Sender: TObject);
@@ -919,8 +925,9 @@ procedure TfrmTable.DoMRUClick(Sender: TObject);
 begin
   //кликаем на мру элемент
   if not(Sender is TMenuItem) then Exit;
-  if LoadGraph(TMenuItem(Sender).Caption) then
-    AddToMRU(TMenuItem(Sender).Caption);
+  LoadGraph(TMenuItem(Sender).Caption);
+  AddToMRU(TMenuItem(Sender).Caption);
+  View;
 end;
 
 function TfrmTable.GetCellType(ACol, ARow: Integer): TDayItem;
@@ -986,13 +993,8 @@ begin
   end;
 end;
 
-function TfrmTable.LoadGraph(AFileName: string): boolean;
+procedure TfrmTable.LoadGraph(AFileName: string);
 begin
-  Result:=False;
-  if not FileExists(AFileName) then begin
-    ShowMessage('Файл графика '+AFileName+' не найден');
-    Exit;
-  end;
   if FData=nil then FData:=TGraphData.Create
   else begin
     ///!!!проверяем, вруг есть что то не записаное
@@ -1004,7 +1006,6 @@ begin
   FData.LoadData(AFileName);
   UpdateFormCaption;
   View;
-  Result:=True;
 end;
 
 procedure TfrmTable.LoadMRU;
@@ -1044,9 +1045,9 @@ end;
 
 procedure TfrmTable.UpdateFormCaption;
 begin
-  if FData=nil then Exit;
   Caption:='График за '+ DefaultFormatSettings.LongMonthNames[FData.CurrMonth] +
     ' '+IntToStr(FData.CurrYear)+'г. [' +GraphData.FileName + ']';
+
 end;
 
 procedure TfrmTable.DoSelectHours(Sender: TObject);
@@ -1218,12 +1219,12 @@ begin
   pmTypes.Items.Add(mi);
 
   mi:=TMenuItem.Create(Self);
-  mi.Caption:='Снять "Заблокировано"';
+  mi.Caption:='Убрать "Зарезервировано"';
   mi.OnClick:=@UnlockCell;
   miAnyFlags.Add(mi);
 
   mi:=TMenuItem.Create(Self);
-  mi.Caption:='Снять "Заблокировано"';
+  mi.Caption:='Убрать "Зарезервировано"';
   mi.OnClick:=@UnlockCell;
   pmTypes.Items.Add(mi);
 
@@ -1280,7 +1281,7 @@ begin
     ShowMessage('Операция недоступна - нет открытого графика!');
     Exit;
   end;
-  Result:=False;
+  Result:=True;
 end;
 
 end.

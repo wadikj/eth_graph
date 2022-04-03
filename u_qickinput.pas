@@ -75,7 +75,6 @@ var B:TSpeedButton;
 begin
   B:=TSpeedButton.Create(Self);
   B.Parent:=fp;
-  //B.Width:=ClientWidth;
   B.Left:=0;
   B.Height:=BHeight;
   B.Top:=FBTop;
@@ -90,7 +89,6 @@ begin
   ac.ShortCut:=AAction.ShortCut;
   ac.OnExecute:=AAction.OnExecute;
   ac.ActionList:=ActionList1;
-  ClientHeight:=b.Height+BHeight;
 end;
 
 procedure TfrmQuickInput.DoBtnClick(Sender: TObject);
