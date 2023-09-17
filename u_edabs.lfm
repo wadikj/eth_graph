@@ -1,0 +1,154 @@
+object frmEditAbs: TfrmEditAbs
+  Left = 570
+  Height = 314
+  Top = 318
+  Width = 422
+  BorderStyle = bsDialog
+  Caption = 'Редактирование отсутствия'
+  ClientHeight = 314
+  ClientWidth = 422
+  DesignTimePPI = 120
+  Font.Height = -24
+  OnClose = FormClose
+  LCLVersion = '2.0.10.0'
+  object dtStart: TDateTimePicker
+    Left = 10
+    Height = 40
+    Top = 130
+    Width = 143
+    CenturyFrom = 1941
+    MaxDate = 2958465
+    MinDate = -53780
+    Font.Height = -24
+    ParentFont = False
+    TabOrder = 2
+    TrailingSeparator = False
+    TextForNullDate = 'NULL'
+    LeadingZeros = True
+    Kind = dtkDate
+    TimeFormat = tf24
+    TimeDisplay = tdHMS
+    DateMode = dmComboBox
+    Date = 45007
+    Time = 0.406266585647245
+    UseDefaultSeparators = True
+    HideDateTimeParts = []
+    MonthNames = 'Long'
+  end
+  object Label1: TLabel
+    Left = 10
+    Height = 32
+    Top = 100
+    Width = 82
+    Caption = 'Начало'
+    Font.Height = -24
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 180
+    Height = 32
+    Top = 100
+    Width = 226
+    Caption = 'Продолжительность'
+    Font.Height = -24
+    ParentColor = False
+    ParentFont = False
+  end
+  object seLen: TSpinEdit
+    Left = 186
+    Height = 40
+    Top = 130
+    Width = 219
+    Font.Height = -24
+    MaxValue = 31
+    MinValue = 1
+    ParentFont = False
+    TabOrder = 3
+    Value = 1
+  end
+  object Label4: TLabel
+    Left = 10
+    Height = 32
+    Top = 10
+    Width = 103
+    Caption = 'Работник'
+    Font.Height = -24
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 10
+    Height = 32
+    Top = 58
+    Width = 165
+    Caption = 'Тип отсутствия'
+    Font.Height = -24
+    ParentColor = False
+    ParentFont = False
+  end
+  object cbWorker: TComboBox
+    Left = 186
+    Height = 40
+    Top = 10
+    Width = 224
+    Font.Height = -24
+    ItemHeight = 32
+    ParentFont = False
+    Style = csDropDownList
+    TabOrder = 0
+  end
+  object cbType: TComboBox
+    Left = 186
+    Height = 40
+    Top = 58
+    Width = 224
+    Font.Height = -24
+    ItemHeight = 32
+    ParentFont = False
+    Style = csDropDownList
+    TabOrder = 1
+  end
+  object leComm: TLabeledEdit
+    Left = 10
+    Height = 40
+    Top = 200
+    Width = 400
+    EditLabel.Height = 32
+    EditLabel.Width = 400
+    EditLabel.Caption = 'Комментарий'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.Height = -24
+    Font.Height = -24
+    ParentFont = False
+    TabOrder = 4
+    Text = 'leComm'
+  end
+  object BitBtn1: TBitBtn
+    Left = 80
+    Height = 48
+    Top = 250
+    Width = 124
+    Default = True
+    DefaultCaption = True
+    Font.Height = -24
+    Kind = bkOK
+    OnClick = BitBtn1Click
+    ParentFont = False
+    TabOrder = 5
+  end
+  object BitBtn2: TBitBtn
+    Left = 230
+    Height = 48
+    Top = 250
+    Width = 124
+    Cancel = True
+    DefaultCaption = True
+    Font.Height = -24
+    Kind = bkCancel
+    ModalResult = 2
+    ParentFont = False
+    TabOrder = 6
+  end
+end

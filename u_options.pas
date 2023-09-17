@@ -21,7 +21,7 @@ type
 
   TDayType = (dtUnk, dtNightFirst, dtNightLast, dtDay, dtOHT, dtTU,
     dtOtp, dtZam, dtVih, dtMP, dt2Night, dtOther, dtFV, dtEzhedn, dtMed, dtLearn,
-    dtLine, dtLocked, dtDisease);
+    dtLine, dtLocked, dtDisease, dtExtraDay);
 
   TDayTypes = set of TDayType;
 
@@ -34,7 +34,7 @@ type
 
   TDayStyles = array [TDayType] of TCellParams;
 
-  THoursMap = specialize TFPGMap<string,string>;//на входе буква в клеточке, на выходе время
+  THoursMap = specialize TFPGMap<string,string>;//на входе буква в клеточке, на выходе время И ЧЕРЕЗ | ЧАСЫ, КОТОРЫЕ НУЖНО СТАВИТЬ ВМЕСТО БУКВЫ
 
   TWorkHours = array [TDayType] of THoursMap;
 
@@ -135,6 +135,7 @@ type
 
   TExtraCollection = class (TCollection)
     private
+      function GetByShortName(AName: string): TExtraItem;
       function GetExtraItem(Index: Integer): TExtraItem;
       function GetVisibleCount: Integer;
       function GetVisiblies(AIndex: Integer): TExtraItem;
@@ -142,6 +143,7 @@ type
       property VisibleCount:Integer read GetVisibleCount;
       property Visiblies[AIndex:Integer]:TExtraItem read GetVisiblies;
       property Items[Index:Integer]:TExtraItem read GetExtraItem;
+      property ByShortName[AName:string]:TExtraItem read GetByShortName;
   end;
 
   { TOnlyTextItem }
@@ -164,7 +166,27 @@ type
       property Items[AIndex:TDayType]:TOnlyTextItem read GetItems;default;
   end;
 
+  { TScrItem }
 
+  TScrItem = class(TCollectionItem)
+    private
+      FFileName: string;
+      FHint: string;
+      FName: string;
+    published
+      property FileName:string read FFileName write FFileName;
+      property Name:string read FName write FName;
+      property Hint:string read FHint write FHint;
+  end;
+
+  { TScrCollection }
+
+  TScrCollection = class(TCollection)
+    private
+      function GetItems(AIndex: Integer): TScrItem;
+    public
+      property Items[AIndex:Integer]:TScrItem read GetItems;default;
+  end;
 
 
   { TOptions }
@@ -173,6 +195,7 @@ type
     private
       FAlwaysUseHours: boolean;
       FDaysLine: Integer;
+      FDBPath: string;
       FDefDataDir: string;
       FDefImpMonth: integer;
       FDefImpYear: integer;
@@ -190,10 +213,14 @@ type
       FgFontSize: Integer;
       FgSetOnlyUnk: boolean;
       FgShowDefChars: boolean;
+      FgShowHours: boolean;
       FgShowMP: boolean;
       FgTSSM: string;
       FOEDayRules: TOECollection;
+      FPyPath: string;
       FsCols: string;
+      FScrDir: string;
+      FShowLog: boolean;
       FUseWeekendColors: boolean;
       FxFirstCol: integer;
       FxFirstRow: Integer;
@@ -201,7 +228,12 @@ type
       FxMansColName: Integer;
       FxMansColTime: Integer;
       FxMansRow: integer;
+      FxNewTemplate: string;
+      FxOldTemplate: string;
       FxTextOnly: TOnlyTextCollection;
+      FXUseLastNewTempl: boolean;
+      FxUseLastOldTempl: boolean;
+      FScripts:TScrCollection;
       function GetTypeCodes(AType: TDayType): string;
       function GetTypeNames(AType: TDayType): string;
     public
@@ -223,6 +255,8 @@ type
       property TypeNames[AType:TDayType]:string read GetTypeNames;
       property TypeCodes[AType:TDayType]:string read GetTypeCodes;
 
+      function GetDocument(ADocPath:string):OleVariant;
+
 
     published
       //imp-exp to old format
@@ -242,6 +276,7 @@ type
       property gFirstCol:integer read FgFirstCol write FgFirstCol;//ширина первой строки
       property gFontName:string read FgFontName write FgFontName;
       property gFontSize:Integer read FgFontSize write FgFontSize;
+      property gShowHours:boolean read FgShowHours write FgShowHours;
       //список доп колонок (суммарных)
       property gExtraCols:TExtraCollection read FExtraCols;
       property gExtraRows:TExtraCollection read FExtraRows;
@@ -253,6 +288,10 @@ type
       property xMansColTime:Integer read FxMansColTime write FxMansColTime;
       property xMansColName:Integer read FxMansColName write FxMansColName;
       property xTextOnly:TOnlyTextCollection read FxTextOnly;
+      property xOldTemplate:string read FxOldTemplate write FxOldTemplate;
+      property xNewTemplate:string read FxNewTemplate write FxNewTemplate;
+      property xUseLastOldTempl:boolean read FxUseLastOldTempl write FxUseLastOldTempl;
+      property XUseLastNewTempl:boolean read FXUseLastNewTempl write FXUseLastNewTempl;
 
       //это используется при импорте из старого экселя
       property DefWorkerCount:Integer read FDefWorkerCount write FDefWorkerCount;
@@ -269,24 +308,30 @@ type
 
       property DefDataDir:string  read FDefDataDir write FDefDataDir;
       property sCols:string read FsCols write FsCols;//колонки для суммированного учета
+      property DBPath:string read FDBPath write FDBPath;
 
+      //other
+      property PyPath:string read FPyPath write FPyPath;
+      property ScrDir:string read FScrDir write FScrDir;
+      property ShowLog:boolean read FShowLog write FShowLog;
+      property Scripts:TScrCollection read FScripts;
 
   end;
 
 
 const
   StrTypes : array [TDayType] of string = ('U','NF','NL','D','O','T','OT',
-    'Z','B','MP','4 8', 'A','F','E','M','U','L','R','Б');
+    'Z','B','MP','4 8', 'A','F','E','M','U','L','R','Б','П');
   TypeText : array [TDayType] of string = ('Не задано','Начало ночь','Конец ночь',
     'Смена день','Охрана труда','Tехучеба','Отпуск','Замещение','Bыходной','Межсменный промежуток',
     'С ночи в ночь', 'Прочее','Фактич. выходной','Ежедневная работа','Медкомиссия',
-    'Обучение','Выезд на линию','Зарезервировано', 'Больничный');
+    'Обучение','Выезд на линию','Зарезервировано', 'Больничный', 'Переработка');
 
 function Options:TOptions;
 
 implementation
 
-uses s_tools;
+uses s_tools, ComObj, Variants;
 
 var FOptions:TOptions;
 
@@ -295,6 +340,13 @@ begin
   if FOptions=nil then
     FOptions:=TOptions.Create('');
   Result:=FOptions;
+end;
+
+{ TScrCollection }
+
+function TScrCollection.GetItems(AIndex: Integer): TScrItem;
+begin
+  Result:=TScrItem(inherited Items[AIndex]);
 end;
 
 { TOnlyTextCollection }
@@ -398,8 +450,9 @@ function TExtraItem.GetUsedHoursOfTypeDef(AItem: TDayItem; IsWeekend: boolean
 var I:Integer;
 begin
   //пока ложим на Weekend
-{  смотрим, если тип нашего дня есть в поддерживаемых, то извлекаем
-  число из Hours. Если FUsedArray не пустой, то смотрим, если наш тип есть там, то используем число из этого типа}
+  {смотрим, если тип нашего дня есть в поддерживаемых, то извлекаем
+  число из Hours. Если FUsedArray не пустой, то смотрим, если наш тип есть там,
+  то используем число из этого типа}
   Result:=0;
   if not (AItem.FType in FDayTypes) then begin
     Exit;
@@ -434,6 +487,19 @@ end;
 
 { TExtraCollection }
 
+function TExtraCollection.GetByShortName(AName: string): TExtraItem;
+var
+  X: TCollectionItem;
+begin
+  Result:=nil;
+  for X in Self do begin
+    if TExtraItem(X).FShortName=AName then begin
+      Result:=TExtraItem(X);
+      Break;
+    end;
+  end;
+end;
+
 function TExtraCollection.GetExtraItem(Index: Integer): TExtraItem;
 begin
   Result:=TExtraItem(inherited Items[Index]);
@@ -462,6 +528,7 @@ begin
     end;
   end;
 end;
+
 
 
 
@@ -527,6 +594,7 @@ begin
   FFiles:=TStringList.Create;
   FMRUList:=TStringList.Create;
   FxTextOnly:=TOnlyTextCollection.Create(TOnlyTextItem);
+  FScripts:=TScrCollection.Create(TScrItem);
   inherited Create(AFileName);
 end;
 
@@ -539,6 +607,13 @@ begin
   //тут всю фигню добавить, что в конструкторе создана
   FWorkerList.Free;
   FxTextOnly.Free;
+  FExtraCols.Free;
+  FExtraRows.Free;
+  FOEDayRules.Free;
+  FFolders.Free;
+  FFiles.Free;
+  FMRUList.Free;
+  FScripts.Free;
 end;
 
 procedure TOptions.Load;
@@ -646,6 +721,27 @@ begin
   AParams.FFontColor:=StrToInt(DivStr(AData,','));
   AParams.FFontFlags:=TFontStyles(StrToInt(DivStr(AData,',')));
   AParams.FTypeStr:=AData;
+end;
+
+function TOptions.GetDocument(ADocPath: string): OleVariant;
+var
+  I: Integer;
+  XL:OleVariant;
+begin
+  XL:=Unassigned;
+  Result:=Unassigned;
+  try
+    XL:=GetActiveOleObject('Excel.Application');
+    for I:=1 to XL.WorkBooks.Count do begin
+      if XL.WorkBooks.Item[I].FullName = ADocPath then
+        Result:=XL.WorkBooks.Item[I];
+     end;
+  except
+    XL:=CreateOleObject('Excel.Application');
+  end;
+  if not VarIsEmpty(Result) then Exit;
+  Result:=XL.WorkBooks.Open(WideString(ADocPath));
+  //XL:=Unassigned;
 end;
 
 initialization

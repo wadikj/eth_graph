@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Grids, ExtCtrls,
-  StdCtrls, Menus, ActnList, gdata, u_options, Types, LCLProc, ComCtrls;
+  StdCtrls, Menus, ActnList, gdata, u_options, Types, LCLProc, ComCtrls,
+  EditBtn;
 
 type
 
@@ -31,6 +32,20 @@ type
     MenuItem14: TMenuItem;
     MenuItem15: TMenuItem;
     MenuItem16: TMenuItem;
+    MenuItem17: TMenuItem;
+    miGraphList: TMenuItem;
+    N4: TMenuItem;
+    miOtherOpts: TMenuItem;
+    miDBSumm: TMenuItem;
+    miDBGraphList: TMenuItem;
+    miImportToDB: TMenuItem;
+    miSaveToDB: TMenuItem;
+    miDBGraphProps: TMenuItem;
+    miAbsenses: TMenuItem;
+    miShowHours: TMenuItem;
+    miSortOrders: TMenuItem;
+    miWorkList: TMenuItem;
+    miGraphTypes: TMenuItem;
     miSummOpts: TMenuItem;
     miReadme: TMenuItem;
     miAbout: TMenuItem;
@@ -93,22 +108,40 @@ type
     ToolBar1: TToolBar;
     ToolButton1: TToolButton;
     ToolButton10: TToolButton;
-    ToolButton2: TToolButton;
+    ToolButton13: TToolButton;
+    tbGraphList: TToolButton;
+    ToolButton15: TToolButton;
+    ToolButton16: TToolButton;
+    tbSave: TToolButton;
+    tbDBSumm: TToolButton;
     ToolButton3: TToolButton;
     tbText: TToolButton;
     ToolButton4: TToolButton;
     ToolButton5: TToolButton;
     tbType: TToolButton;
     tbSetTempl: TToolButton;
+    ToolButton6: TToolButton;
     ToolButton7: TToolButton;
     ToolButton8: TToolButton;
     ToolButton9: TToolButton;
     procedure ApplicationProperties1Hint(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
+    procedure MenuItem17Click(Sender: TObject);
+    procedure miAbsensesClick(Sender: TObject);
+    procedure miDBGraphListClick(Sender: TObject);
+    procedure miDBGraphPropsClick(Sender: TObject);
+    procedure miDBSummClick(Sender: TObject);
+    procedure miGraphListClick(Sender: TObject);
+    procedure miGraphTypesClick(Sender: TObject);
     procedure miAboutClick(Sender: TObject);
     procedure miAnyFlagsClick(Sender: TObject);
+    procedure miImportToDBClick(Sender: TObject);
+    procedure miOtherOptsClick(Sender: TObject);
     procedure miReadmeClick(Sender: TObject);
+    procedure miSaveToDBClick(Sender: TObject);
+    procedure miShowHoursClick(Sender: TObject);
+    procedure miSortOrdersClick(Sender: TObject);
     procedure miSummClick(Sender: TObject);
     procedure miOtherHoursClick(Sender: TObject);
     procedure miExpotrNamedClick(Sender: TObject);
@@ -138,12 +171,17 @@ type
     procedure miSetNightClick(Sender: TObject);
     procedure miSetOnlyUnkClick(Sender: TObject);
     procedure miShowMPClick(Sender: TObject);
+    procedure miWorkListClick(Sender: TObject);
     procedure sgPrepareCanvas(sender: TObject; aCol, aRow: Integer;
       aState: TGridDrawState);
     procedure sgSelection(Sender: TObject; aCol, aRow: Integer);
     procedure tbSetTemplClick(Sender: TObject);
     procedure tbTextClick(Sender: TObject);
     procedure tbTypeClick(Sender: TObject);
+    procedure ToolButton11Click(Sender: TObject);
+    procedure ToolButton12Click(Sender: TObject);
+    procedure tbGraphListClick(Sender: TObject);
+    procedure tbDBSummClick(Sender: TObject);
   private
     FData:TGraphData;
     FExtraFixedCols: Integer;
@@ -185,6 +223,7 @@ type
     procedure DoSelectType(Sender:TObject); // handler of type popup menu
     procedure DoReadHoursType(Sender:TObject);//set hours and type from current cell to templates
     procedure UnlockCell(Sender:TObject);//handler to unlock cell (Locked->Unknow)
+    procedure RCheckMenuItem(AItem:TMenuItem);
   public
     procedure View;
     procedure InitView;
@@ -200,7 +239,9 @@ type
     property GraphData:TGraphData read FData;
     procedure CreateData(AMonth,AYear:Integer);
 
+    procedure LoadGraph(AGraphID:Integer);
     function CheckOpenedGraph:boolean;
+    property Data:TGraphData read FData;
   end;
 
 
@@ -242,7 +283,9 @@ implementation
 
 uses s_tools, u_editActions, u_QickInput, u_memo, u_gridprops, u_othercolors,
   u_edextra, u_othergrids, u_newgr, u_OldExport, U_newexpopts, impOpts,
-  u_editManList, u_timeints, u_summ, u_about, u_editSumm, Windows;
+  u_editManList, u_timeints, u_summ, u_about, u_editSumm, u_editgtypes,
+  u_editWorkers, u_edWlists, u_absenses, u_makediffs, u_impfile, u_GraphList,
+  u_edDbProps, u_DBSummary, u_otteropts, Windows;
 
 procedure ExecAction(AForm: TfrmTable; AScr: string);
 var E:TAEngine;
@@ -336,7 +379,7 @@ var I,Last:Integer; // последний день, до которого зап
     Rep:boolean;
 begin
   //тут пофиг, заполняем от начала до конца переданного участка укзанной последовательностью
-  //чтобы было хорошо, если последовательность из несколькох клеточек, и у нас выделен 1 день
+  //чтобы было хорошо, если последовательность из несколькох клеочек, и у нас выделен 1 день
   // то цикл должен быть пока не закончится последовательность
 
   //если Last <1, то заполняем до конца сетки
@@ -459,6 +502,44 @@ begin
   for I:=0 to pmHours.Items.Count-2 do begin
     pmHours.Items[I].OnClick:=@DoSelectHours;
   end;
+  miShowHours.Checked:=Options.gShowHours;
+end;
+
+procedure TfrmTable.MenuItem17Click(Sender: TObject);
+begin
+  MakeDiffs;
+end;
+
+procedure TfrmTable.miAbsensesClick(Sender: TObject);
+begin
+  ShowAbsenses;
+end;
+
+procedure TfrmTable.miDBGraphListClick(Sender: TObject);
+begin
+  ViewGraphList;
+end;
+
+procedure TfrmTable.miDBGraphPropsClick(Sender: TObject);
+begin
+  if EditDBGraphProps then
+    View;
+end;
+
+procedure TfrmTable.miDBSummClick(Sender: TObject);
+begin
+  ShowDBSummary;
+end;
+
+procedure TfrmTable.miGraphListClick(Sender: TObject);
+begin
+  ViewGraphList;
+end;
+
+procedure TfrmTable.miGraphTypesClick(Sender: TObject);
+var I:Integer;
+begin
+  EditGTypes(True,I);
 end;
 
 procedure TfrmTable.miAboutClick(Sender: TObject);
@@ -471,12 +552,39 @@ begin
 
 end;
 
+procedure TfrmTable.miImportToDBClick(Sender: TObject);
+begin
+  ImportFromFile;
+end;
+
+procedure TfrmTable.miOtherOptsClick(Sender: TObject);
+begin
+  EditOtherOpth;
+end;
+
 procedure TfrmTable.miReadmeClick(Sender: TObject);
 var S:string;
 begin
   S:=ExtractFileDir(Application.ExeName)+'\readme.docx';
   if FileExists(S) then
     ShellExecuteW(0,'open',PWideChar(WideString(s)),nil,nil,SW_SHOW);
+end;
+
+procedure TfrmTable.miSaveToDBClick(Sender: TObject);
+begin
+  Data.SaveToDB;
+end;
+
+procedure TfrmTable.miShowHoursClick(Sender: TObject);
+begin
+  Options.gShowHours:=not Options.gShowHours;
+  miShowHours.Checked:=Options.gShowHours;
+  UpdateData;
+end;
+
+procedure TfrmTable.miSortOrdersClick(Sender: TObject);
+begin
+  EditWorkersLists;
 end;
 
 procedure TfrmTable.miSummClick(Sender: TObject);
@@ -672,6 +780,11 @@ begin
   miShowMP.Checked:=Options.gShowMP;
 end;
 
+procedure TfrmTable.miWorkListClick(Sender: TObject);
+begin
+  EditWorkersDB;
+end;
+
 procedure TfrmTable.sgPrepareCanvas(sender: TObject; aCol, aRow: Integer;
   aState: TGridDrawState);
 var Style:TTextStyle;
@@ -724,6 +837,25 @@ procedure TfrmTable.tbTypeClick(Sender: TObject);
 begin
   FSetFlagType:=FTemplType;
   SetSelection(@SetAnyFlag);
+end;
+
+procedure TfrmTable.ToolButton11Click(Sender: TObject);
+begin
+  ImportFromFile;
+end;
+
+procedure TfrmTable.ToolButton12Click(Sender: TObject);
+begin
+end;
+
+procedure TfrmTable.tbGraphListClick(Sender: TObject);
+begin
+  ViewGraphList;
+end;
+
+procedure TfrmTable.tbDBSummClick(Sender: TObject);
+begin
+  miDBSumm.Click;
 end;
 
 procedure TfrmTable.SetCellType(ACol, ARow: Integer; AType: TDayType);
@@ -963,14 +1095,18 @@ procedure TfrmTable.SaveGraph;
 var S:string;
 begin
   if FData=nil then Exit;
-  S:=GraphData.FileName;
-  if S='' then begin
-    ShowMessage('Имя файла для сохранения не задано!!!'#13' Воспользуйтесь командой "Сохранить как..."');
-    Exit;
+  if FData.InDB then begin
+    FData.SaveToDB;
+  end else begin
+    S:=GraphData.FileName;
+    if S='' then begin
+      ShowMessage('Имя файла для сохранения не задано!!!'#13' Воспользуйтесь командой "Сохранить как..."');
+      Exit;
+    end;
+    GraphData.SaveData(S);
+    UpdateFormCaption;
+    AddToMRU(S);
   end;
-  GraphData.SaveData(S);
-  UpdateFormCaption;
-  AddToMRU(S);
 end;
 
 procedure TfrmTable.SaveAs;
@@ -1004,6 +1140,24 @@ begin
     end;
   end;
   FData.LoadData(AFileName);
+  UpdateFormCaption;
+  View;
+end;
+
+procedure TfrmTable.LoadGraph(AGraphID: Integer);
+begin
+  if FData=nil then FData:=TGraphData.Create
+  else begin
+    ///!!!проверяем, вруг есть что то не записаное
+    if FData.Modified then begin
+      if MessageDlg('Сохранение файла', 'Текущий график изменен. Сохранить?',mtConfirmation,mbYesNo,'')=mrYes then
+        if FData.InDB then
+          FData.SaveToDB
+        else //filename = ''?
+          FData.SaveData(FData.FileName);
+    end;
+  end;
+  FData.LoadFromDB(AGraphID);
   UpdateFormCaption;
   View;
 end;
@@ -1044,10 +1198,17 @@ begin
 end;
 
 procedure TfrmTable.UpdateFormCaption;
+var S:string;
 begin
-  Caption:='График за '+ DefaultFormatSettings.LongMonthNames[FData.CurrMonth] +
-    ' '+IntToStr(FData.CurrYear)+'г. [' +GraphData.FileName + ']';
-
+  if FData=nil then Exit;
+  S:='График за '+ DefaultFormatSettings.LongMonthNames[FData.CurrMonth] +
+    ' '+IntToStr(FData.CurrYear)+'г. [';
+  if FData.InDB then begin
+    S:=S+'Тип: '+FData.GetTypeName+', Работники: '+FData.GetSortName+']';
+  end else begin
+    S:=S+GraphData.FileName + ']';
+  end;
+  Caption:=S;
 end;
 
 procedure TfrmTable.DoSelectHours(Sender: TObject);
@@ -1079,6 +1240,22 @@ begin
   dt:=FData.GetCellInfo(RowToWorker(sg.Row),ColToDay(sg.Col)).FType;
   if dt=dtLocked then
     SetCellType(sg.Selection.Left,sg.Selection.Top,dtUnk);
+end;
+
+procedure TfrmTable.RCheckMenuItem(AItem: TMenuItem);
+var
+  M: TMenuItem;
+  I:Integer;
+  idx:Integer;
+begin
+  idx:=-2;
+  if FData.InDB then idx:=-1;
+  for I:=0 to AItem.Count-1 do begin
+    M:=AItem[I];
+    M.Visible:=M.Tag<>idx;
+    if M.Count<>0 then
+      RCheckMenuItem(M);
+  end;
 end;
 
 procedure TfrmTable.View;
@@ -1139,22 +1316,27 @@ var
   I: Integer;
   R:TRect;
 begin
-  if FData=nil then Exit;
-  //фикс строки
-  for I:=0 to Options.gExtraRows.VisibleCount-1 do
-    sg.Cells[0,I+1]:=Options.gExtraRows.Visiblies[I].ShortName;
-  //фикс колонки
-  for I:=0 to Options.gExtraCols.VisibleCount-1 do
-    sg.Cells[I+1,0]:=Options.gExtraCols.Visiblies[I].ShortName;
+  try
+    sg.BeginUpdate;
+    if FData=nil then Exit;
+    //фикс строки
+    for I:=0 to Options.gExtraRows.VisibleCount-1 do
+      sg.Cells[0,I+1]:=Options.gExtraRows.Visiblies[I].ShortName;
+    //фикс колонки
+    for I:=0 to Options.gExtraCols.VisibleCount-1 do
+      sg.Cells[I+1,0]:=Options.gExtraCols.Visiblies[I].ShortName;
 
-  for I:=0 to FData.WorkerCount-1 do
-    sg.Cells[0,I+FExtraFixedRows+1]:=FData.Workers[I];//Items[I].FName;
+    for I:=0 to FData.WorkerCount-1 do
+      sg.Cells[0,I+FExtraFixedRows+1]:=FData.Workers[I];//Items[I].FName;
 
-  R.Left:=1;
-  R.Right:=FData.MonthDays;
-  R.Top:=0;
-  R.Bottom:=FData.WorkerCount-1;
-  UpdateRect(R);
+    R.Left:=1;
+    R.Right:=FData.MonthDays;
+    R.Top:=0;
+    R.Bottom:=FData.WorkerCount-1;
+    UpdateRect(R);
+  finally
+    sg.EndUpdate(True);
+  end;
 end;
 
 procedure TfrmTable.UpdateMenu;
@@ -1186,6 +1368,7 @@ begin
     mi.OnClick:=@DoExtraColsClick;
     miExtraCols.Add(mi);
   end;
+  RCheckMenuItem(MainMenu1.Items);
 end;
 
 procedure TfrmTable.UpdateDTMenu;
@@ -1219,12 +1402,12 @@ begin
   pmTypes.Items.Add(mi);
 
   mi:=TMenuItem.Create(Self);
-  mi.Caption:='Убрать "Зарезервировано"';
+  mi.Caption:='Снять "Заблокировано"';
   mi.OnClick:=@UnlockCell;
   miAnyFlags.Add(mi);
 
   mi:=TMenuItem.Create(Self);
-  mi.Caption:='Убрать "Зарезервировано"';
+  mi.Caption:='Снять "Заблокировано"';
   mi.OnClick:=@UnlockCell;
   pmTypes.Items.Add(mi);
 

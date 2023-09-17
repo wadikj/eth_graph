@@ -6,6 +6,7 @@
     <General>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
+      <AutoCreateForms Value="False"/>
       <Title Value="Eth_graph"/>
       <Scaled Value="True"/>
       <ResourceType Value="res"/>
@@ -15,88 +16,8 @@
       </XPManifest>
       <Icon Value="0"/>
     </General>
-    <BuildModes Count="3">
+    <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
-      <Item2 Name="Debug">
-        <CompilerOptions>
-          <Version Value="11"/>
-          <PathDelim Value="\"/>
-          <Target>
-            <Filename Value="Eth_graph"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <Parsing>
-            <SyntaxOptions>
-              <IncludeAssertionCode Value="True"/>
-            </SyntaxOptions>
-          </Parsing>
-          <CodeGeneration>
-            <Checks>
-              <IOChecks Value="True"/>
-              <RangeChecks Value="True"/>
-              <OverflowChecks Value="True"/>
-              <StackChecks Value="True"/>
-            </Checks>
-            <VerifyObjMethodCallValidity Value="True"/>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <DebugInfoType Value="dsDwarf2Set"/>
-              <UseHeaptrc Value="True"/>
-              <TrashVariables Value="True"/>
-              <UseExternalDbgSyms Value="True"/>
-            </Debugging>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
-          </Linking>
-          <Other>
-            <CompilerMessages>
-              <IgnoredMessages idx6058="True"/>
-            </CompilerMessages>
-          </Other>
-        </CompilerOptions>
-      </Item2>
-      <Item3 Name="Release">
-        <CompilerOptions>
-          <Version Value="11"/>
-          <PathDelim Value="\"/>
-          <Target>
-            <Filename Value="Eth_graph"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <CodeGeneration>
-            <SmartLinkUnit Value="True"/>
-            <Optimizations>
-              <OptimizationLevel Value="3"/>
-            </Optimizations>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-            </Debugging>
-            <LinkSmart Value="True"/>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
-          </Linking>
-          <Other>
-            <CompilerMessages>
-              <IgnoredMessages idx6058="True"/>
-            </CompilerMessages>
-          </Other>
-        </CompilerOptions>
-      </Item3>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
@@ -107,12 +28,18 @@
         <Mode0 Name="default"/>
       </Modes>
     </RunParams>
-    <RequiredPackages Count="1">
+    <RequiredPackages Count="3">
       <Item1>
-        <PackageName Value="LCL"/>
+        <PackageName Value="DateTimeCtrls"/>
       </Item1>
+      <Item2>
+        <PackageName Value="FCL"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="LCL"/>
+      </Item3>
     </RequiredPackages>
-    <Units Count="22">
+    <Units Count="36">
       <Unit0>
         <Filename Value="Eth_graph.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -267,6 +194,111 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="u_editSumm"/>
       </Unit21>
+      <Unit22>
+        <Filename Value="u_data.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DM"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="u_editgtypes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmGtypes"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="u_editworkers.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmWorkers"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="u_editWorkers"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="u_edwlists.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmEdWList"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="u_edWlists"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="u_absenses.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmAbs"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="u_edabs.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmEditAbs"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="u_absint.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSelAbsInt"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="u_absInt"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="u_makediffs.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPasteEK"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="u_impfile.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmImpFile"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="u_graphlist.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmGraphList"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="u_GraphList"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="u_newdbgraph.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmNewDBGraph"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="u_newDBGraph"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="u_dbsumopts.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDBSummOpt"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="u_DBSumOpts"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="u_otteropts.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmOtherOpts"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="u_scrprops.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmScrOptions"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="u_ScrProps"/>
+      </Unit35>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -310,7 +342,7 @@
     </Other>
   </CompilerOptions>
   <Debugging>
-    <Exceptions Count="5">
+    <Exceptions Count="6">
       <Item1>
         <Name Value="EAbort"/>
       </Item1>
@@ -326,6 +358,9 @@
       <Item5>
         <Name Value="RunError(201)"/>
       </Item5>
+      <Item6>
+        <Name Value="EConvertError"/>
+      </Item6>
     </Exceptions>
   </Debugging>
 </CONFIG>

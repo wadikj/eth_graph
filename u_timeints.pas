@@ -23,6 +23,7 @@ type
     leHours: TLabeledEdit;
     leTimes: TLabeledEdit;
     lbTypes: TListBox;
+    leOt: TLabeledEdit;
     lvTimes: TListView;
     PageControl1: TPageControl;
     tsNonTimes: TTabSheet;
@@ -36,6 +37,7 @@ type
     procedure lvTimesSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
   private
+    //
     FPrevType:Integer;
     function FindItem(AText:string):TListItem;
   public
@@ -82,6 +84,7 @@ begin
   if Selected=False then Exit;
   leHours.Text:=Item.Caption;
   leTimes.Text:=Item.SubItems[0];
+  leOt.Text:=Item.SubItems[1];
 end;
 
 function TfrmHours.FindItem(AText: string): TListItem;
@@ -102,6 +105,7 @@ begin
   lvTimes.Items.Delete(lvTimes.ItemIndex);
   leHours.Text:='';
   leTimes.Text:='';
+  leOt.Text:='';
 end;
 
 procedure TfrmHours.btSetNonTimesClick(Sender: TObject);
@@ -126,9 +130,12 @@ begin
     li:=lvTimes.Items.Add;
     li.Caption:=leHours.Text;
     li.SubItems.Add(leTimes.Text);
+    li.SubItems.Add(leOt.Text);
     li.Selected:=True;
-  end else
+  end else begin
     li.SubItems[0]:=leTimes.Text;
+    li.SubItems[1]:=leOt.Text;
+  end;
 end;
 
 procedure TfrmHours.Init;
@@ -145,6 +152,8 @@ end;
 procedure TfrmHours.ShowType(AType: TDayType);
 var I:Integer;
     li:TListItem;
+    S:string;
+    A:TStringArray;
 begin
   lvTimes.Items.BeginUpdate;
   try
@@ -152,7 +161,13 @@ begin
     for I:=0 to Options.FWorkHours[AType].Count-1 do begin
       li:=lvTimes.Items.Add;
       li.Caption:=Options.FWorkHours[AType].Keys[I];
-      li.SubItems.Add(Options.FWorkHours[AType].Data[I]);
+      S:=Options.FWorkHours[AType].Data[I];
+      A:=S.Split(['|']);
+      li.SubItems.Add(A[0]);
+      if Length(A)>1 then
+        li.SubItems.Add(A[1])
+      else
+        li.SubItems.Add('');
     end;
   finally
     lvTimes.Items.EndUpdate;
@@ -160,6 +175,7 @@ begin
   if lvTimes.Items.Count=0 then begin
     leHours.Text:='';
     leTimes.Text:='';
+    leOt.Text:='';
   end else begin
     lvTimes.ItemIndex:=0;
   end;
@@ -179,6 +195,8 @@ begin
   for I:=0 to lvTimes.Items.Count-1 do begin
     H:=lvTimes.Items[I].Caption;
     T:=lvTimes.Items[I].SubItems[0];
+    if lvTimes.Items[I].SubItems[1]<>'' then
+      T:=T+'|'+lvTimes.Items[I].SubItems[1];
     Options.FWorkHours[dt].AddOrSetData(Trim(H),T);
   end;
 end;

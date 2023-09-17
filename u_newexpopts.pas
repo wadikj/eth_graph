@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Buttons;
+  Buttons, ComObj, Variants;
 
 type
 
@@ -16,8 +16,9 @@ type
     btExport: TButton;
     btCancel: TButton;
     GroupBox1: TGroupBox;
+    Label1: TLabel;
     leColFirstDay: TLabeledEdit;
-    leDocName: TLabeledEdit;
+    cbDocName: TComboBox;
     leRowFirstWorker: TLabeledEdit;
     leRowManFirst: TLabeledEdit;
     leColDate: TLabeledEdit;
@@ -25,12 +26,13 @@ type
     leColWorker: TLabeledEdit;
     SpeedButton1: TSpeedButton;
     procedure btExportClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure SpeedButton1Click(Sender: TObject);
   private
     FWB:OleVariant;
+    //FXL:OleVariant;
     procedure Init;
     procedure SaveChanges;
-
   public
 
   end;
@@ -44,10 +46,11 @@ procedure ExportNew;
 
 implementation
 
-uses u_options, eth_tbl, u_openXL;
+uses u_options, eth_tbl, u_openXL, u_openFF;
 
 function EditExpOption: boolean;
 begin
+  ///!!!вальнут это !!!
   Application.CreateForm(TfrmNewExp,frmNewExp);
   frmNewExp.Init;
   REsult:=frmNewExp.ShowModal=mrOK;
@@ -59,8 +62,12 @@ begin
   Application.CreateForm(TfrmNewExp,frmNewExp);
   frmNewExp.Init;
   if frmNewExp.ShowModal=mrOK then begin
-    if frmTable.GraphData<>nil then
-      frmTable.GraphData.ExportData(frmNewExp.FWB)
+    frmNewExp.FWB:=Options.GetDocument(frmNewExp.cbDocName.Text);
+    if frmTable.GraphData<>nil then begin
+      frmTable.GraphData.ExportData(frmNewExp.FWB);
+      if not frmNewExp.FWB.Application.Visible then frmNewExp.FWB.Application.Visible:=True;
+      //frmNewExp.FXL.Saved[0]:=True;
+    end
     else
       ShowMessage('Нет графика для экспорта!!!');
   end;
@@ -75,25 +82,34 @@ end;
 procedure TfrmNewExp.btExportClick(Sender: TObject);
 begin
   SaveChanges;
-  if leDocName.Text<>'' then
+  if cbDocName.Text<>'' then
     ModalResult:=mrOK;
+end;
+
+procedure TfrmNewExp.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  CloseAction:=caHide;
 end;
 
 procedure TfrmNewExp.SpeedButton1Click(Sender: TObject);
 var S:string;
 begin
-  FWB:=SelExcelDoc(S);
-  if S<>'' then leDocName.Text:=S;
+  S:=OpenFileFolder(True);
+  //FWB:=SelExcelDoc(S);
+  if S<>'' then cbDocName.Text:=S;
 end;
 
 procedure TfrmNewExp.Init;
 begin
+  FWB:=Null;
   leColFirstDay.Text:=IntToStr(Options.xFirstCol);
   leRowFirstWorker.Text:=IntToStr(Options.xFirstRow);
   leRowManFirst.Text:=IntToStr(Options.xMansRow);
   leColDate.Text:=IntToStr(Options.xMansCol);
   leColTime.Text:=IntToStr(Options.xMansColTime);
   leColWorker.Text:=IntToStr(Options.xMansColName);
+  cbDocName.Items.Assign(Options.FFiles);
+  cbDocName.Caption:=Options.xNewTemplate;
 end;
 
 procedure TfrmNewExp.SaveChanges;
@@ -104,6 +120,8 @@ begin
   Options.xMansCol:=StrToInt(leColDate.Text);
   Options.xMansColTime:=StrToInt(leColTime.Text);
   Options.xMansColName:=StrToInt(leColWorker.Text);
+  //if (Options.xNewTemplate='') or (Options.XUseLastNewTempl) then
+  Options.xNewTemplate:=cbDocName.Caption;
 end;
 
 end.

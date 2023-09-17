@@ -24,11 +24,13 @@ type
     cbOutHours: TCheckBox;
     edOtherStr: TEdit;
     GroupBox1: TGroupBox;
-    leDocName: TLabeledEdit;
+    Label1: TLabel;
+    cbDocName: TComboBox;
     leFirstWorker: TLabeledEdit;
     leFirstDate: TLabeledEdit;
     leDaysLine: TLabeledEdit;
     lb: TListBox;
+    OpenDialog1: TOpenDialog;
     SpeedButton1: TSpeedButton;
     procedure btSaveClick(Sender: TObject);
     procedure btExportClick(Sender: TObject);
@@ -58,16 +60,19 @@ function EditOldExpOpts:boolean;
 
 implementation
 
-uses u_openXL, eth_tbl;
+uses eth_tbl, u_openFF;
 
 procedure ExportOldXL;
 begin
   Application.CreateForm(TfrmExpOldXL,frmExpOldXL);
   frmExpOldXL.InitForm;
   if frmExpOldXL.ShowModal=mrOK then begin
-    if frmTable.GraphData<>nil then
-      frmTable.GraphData.ExportOldGraph(frmExpOldXL.FWB)
-    else
+    if frmTable.GraphData<>nil then begin
+      frmExpOldXL.FWB:=Options.GetDocument(frmExpOldXL.cbDocName.Text);
+      frmTable.GraphData.ExportOldGraph(frmExpOldXL.FWB);
+      if not frmExpOldXL.FWB.Application.Visible then
+        frmExpOldXL.FWB.Application.Visible:=True;
+    end else
       ShowMessage('Нет графика для экспорта!!!');
   end;
   frmExpOldXL.FWB:=Null;
@@ -94,7 +99,7 @@ end;
 procedure TfrmExpOldXL.btExportClick(Sender: TObject);
 begin
   SaveAll;
-  if leDocName.Text<>'' then
+  if cbDocName.Text<>'' then
     ModalResult:=mrOK;
 end;
 
@@ -117,10 +122,13 @@ begin
 end;
 
 procedure TfrmExpOldXL.SpeedButton1Click(Sender: TObject);
-var S:string;
+var
+  S: String;
 begin
-  FWB:=SelExcelDoc(S);
-  if S<>'' then leDocName.Text:=S;
+  S:=OpenFileFolder(True);
+  //if OpenDialog1.Execute then
+  if S<>'' then
+    cbDocName.Text:=S;
 end;
 
 procedure TfrmExpOldXL.InitForm;
@@ -138,6 +146,8 @@ begin
   cbOutHours.Checked:=Options.AlwaysUseHours;
   lb.ItemIndex:=0;
   FEditItem:=nil;
+  cbDocName.Items.Assign(Options.FFiles);
+  cbDocName.Caption:=Options.xOldTemplate;
 end;
 
 procedure TfrmExpOldXL.InitDayRules;
@@ -200,6 +210,9 @@ begin
   Options.FirstDay:=StrToInt(leFirstDate.Text);
   Options.UseWeekendColors:=cbUseWeek.Checked;
   Options.AlwaysUseHours:=cbOutHours.Checked;
+  //if (Options.xOldTemplate='') or (Options.xUseLastOldTempl) then
+  Options.xOldTemplate:=cbDocName.Caption;
+
 end;
 
 end.

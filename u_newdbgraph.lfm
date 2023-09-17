@@ -1,0 +1,204 @@
+object frmNewDBGraph: TfrmNewDBGraph
+  Left = 564
+  Height = 394
+  Top = 154
+  Width = 361
+  BorderStyle = bsDialog
+  Caption = 'Создание графика'
+  ClientHeight = 394
+  ClientWidth = 361
+  Font.Height = -19
+  OnClose = FormClose
+  OnDestroy = FormDestroy
+  LCLVersion = '2.0.10.0'
+  object Label1: TLabel
+    Left = 8
+    Height = 23
+    Top = 0
+    Width = 31
+    Caption = 'Год'
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 168
+    Height = 23
+    Top = 0
+    Width = 55
+    Caption = 'Месяц'
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object cbMonth: TComboBox
+    Left = 168
+    Height = 31
+    Hint = 'Месяц нового графика'
+    Top = 29
+    Width = 184
+    DropDownCount = 12
+    Font.Height = -19
+    ItemHeight = 23
+    ItemIndex = 5
+    Items.Strings = (
+      '01-январь'
+      '02-февраль'
+      '03-март'
+      '04-апрель'
+      '05-май'
+      '06-июнь'
+      '07-июль'
+      '08-август'
+      '09-сентябрь'
+      '10-октябрь'
+      '11-ноябрь'
+      '12-декабрь'
+    )
+    OnSelect = cbMonthSelect
+    ParentFont = False
+    Style = csDropDownList
+    TabOrder = 0
+    Text = '06-июнь'
+  end
+  object seYear: TSpinEdit
+    Left = 8
+    Height = 31
+    Hint = 'Год нового графика'
+    Top = 29
+    Width = 150
+    Font.Height = -19
+    MaxValue = 2100
+    MinValue = 2020
+    OnChange = seYearChange
+    ParentFont = False
+    TabOrder = 1
+    Value = 2023
+  end
+  object leWeekends: TLabeledEdit
+    Left = 6
+    Height = 31
+    Hint = 'Выходные и праздничные дни месяца'
+    Top = 154
+    Width = 344
+    EditLabel.Height = 25
+    EditLabel.Width = 344
+    EditLabel.Caption = 'Выходные и праздничные числа'
+    EditLabel.ParentColor = False
+    EditLabel.ParentFont = False
+    EditLabel.Font.Height = -21
+    Font.Height = -19
+    ParentFont = False
+    TabOrder = 2
+    Text = 'leWeekends'
+  end
+  object cbPredGraph: TComboBox
+    Left = 6
+    Height = 31
+    Top = 90
+    Width = 344
+    Font.Height = -19
+    ItemHeight = 23
+    ItemIndex = 0
+    Items.Strings = (
+      'Не использовать'
+    )
+    OnSelect = cbPredGraphSelect
+    ParentFont = False
+    Style = csDropDownList
+    TabOrder = 3
+    Text = 'Не использовать'
+  end
+  object Label3: TLabel
+    Left = 6
+    Height = 23
+    Top = 64
+    Width = 273
+    Caption = 'Использовать данные графика'
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object cbUseAbsenses: TCheckBox
+    Left = 5
+    Height = 27
+    Top = 301
+    Width = 243
+    Caption = 'Использовать отсутствия'
+    Font.Height = -19
+    ParentFont = False
+    TabOrder = 4
+  end
+  object Label4: TLabel
+    Left = 8
+    Height = 23
+    Top = 243
+    Width = 286
+    Caption = 'Использовать список персонала'
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object cbSortList: TComboBox
+    Left = 6
+    Height = 31
+    Top = 269
+    Width = 344
+    Font.Height = -19
+    ItemHeight = 23
+    ParentFont = False
+    Style = csDropDownList
+    TabOrder = 5
+  end
+  object bbOk: TBitBtn
+    Left = 48
+    Height = 41
+    Hint = 'Создает график'
+    Top = 342
+    Width = 99
+    Anchors = [akLeft, akBottom]
+    Default = True
+    DefaultCaption = True
+    Font.Height = -19
+    Kind = bkOK
+    OnClick = bbOkClick
+    ParentFont = False
+    TabOrder = 6
+  end
+  object bbCancel: TBitBtn
+    Left = 216
+    Height = 41
+    Hint = 'Отмена операции'
+    Top = 342
+    Width = 96
+    Anchors = [akLeft, akBottom]
+    DefaultCaption = True
+    Font.Height = -19
+    Kind = bkCancel
+    ModalResult = 2
+    OnClick = bbCancelClick
+    ParentFont = False
+    TabOrder = 7
+  end
+  object Label5: TLabel
+    Left = 5
+    Height = 23
+    Top = 186
+    Width = 112
+    Caption = 'Тип графика'
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object cbGType: TComboBox
+    Left = 6
+    Height = 31
+    Top = 211
+    Width = 344
+    Font.Height = -19
+    ItemHeight = 23
+    ParentFont = False
+    Style = csDropDownList
+    TabOrder = 8
+  end
+end

@@ -1,220 +1,201 @@
 object frmExpOldXL: TfrmExpOldXL
   Left = 467
-  Height = 506
+  Height = 405
   Top = 184
-  Width = 989
+  Width = 791
   Caption = 'Экспорт в сменный график'
-  ClientHeight = 506
-  ClientWidth = 989
-  DesignTimePPI = 120
-  Font.Height = -26
+  ClientHeight = 405
+  ClientWidth = 791
+  Font.Height = -21
   OnClose = FormClose
   ShowHint = True
   LCLVersion = '2.0.10.0'
   object leFirstWorker: TLabeledEdit
-    Left = 688
-    Height = 44
+    Left = 550
+    Height = 33
     Hint = 'Номер строки в шаблоне, в которой находится первый работник'
-    Top = 92
-    Width = 288
-    EditLabel.Height = 36
-    EditLabel.Width = 288
+    Top = 74
+    Width = 230
+    EditLabel.Height = 25
+    EditLabel.Width = 230
     EditLabel.Caption = 'Первый работник'
     EditLabel.ParentColor = False
     EditLabel.ParentFont = False
-    EditLabel.Font.Height = -26
-    Font.Height = -26
+    EditLabel.Font.Height = -21
+    Font.Height = -21
     ParentFont = False
     TabOrder = 1
     Text = 'leFirstWorker'
   end
   object leFirstDate: TLabeledEdit
-    Left = 688
-    Height = 44
+    Left = 550
+    Height = 33
     Hint = 'Номер колонки в шаблоне, в которой находитя первое число'
-    Top = 169
-    Width = 288
-    EditLabel.Height = 36
-    EditLabel.Width = 288
+    Top = 135
+    Width = 230
+    EditLabel.Height = 25
+    EditLabel.Width = 230
     EditLabel.Caption = 'Первое число'
     EditLabel.ParentColor = False
     EditLabel.ParentFont = False
-    EditLabel.Font.Height = -26
-    Font.Height = -26
+    EditLabel.Font.Height = -21
+    Font.Height = -21
     ParentFont = False
     TabOrder = 2
     Text = 'leFirstDate'
   end
   object leDaysLine: TLabeledEdit
-    Left = 688
-    Height = 44
+    Left = 550
+    Height = 33
     Hint = 'Строка, в которой в шаблоне находятся даты'
-    Top = 248
-    Width = 288
-    EditLabel.Height = 36
-    EditLabel.Width = 288
+    Top = 198
+    Width = 230
+    EditLabel.Height = 25
+    EditLabel.Width = 230
     EditLabel.Caption = 'Строка дат'
     EditLabel.ParentColor = False
     EditLabel.ParentFont = False
-    EditLabel.Font.Height = -26
-    Font.Height = -26
+    EditLabel.Font.Height = -21
+    Font.Height = -21
     ParentFont = False
     TabOrder = 3
     Text = 'leDaysLine'
   end
   object cbUseWeek: TCheckBox
-    Left = 688
-    Height = 40
+    Left = 550
+    Height = 29
     Hint = 'В шаблон имортируется фон выходных дней'
-    Top = 288
-    Width = 292
+    Top = 230
+    Width = 236
     Caption = 'Экспорт цветов выхов'
-    Font.Height = -26
+    Font.Height = -21
     ParentFont = False
     TabOrder = 4
   end
   object GroupBox1: TGroupBox
     Left = 0
-    Height = 448
-    Top = 50
-    Width = 670
+    Height = 358
+    Top = 40
+    Width = 536
     Caption = 'Импорт типов дней'
-    ClientHeight = 407
-    ClientWidth = 666
-    Font.Height = -26
+    ClientHeight = 328
+    ClientWidth = 532
+    Font.Height = -21
     ParentFont = False
     TabOrder = 0
     object cbUseBG: TCheckBox
-      Left = 380
-      Height = 40
+      Left = 304
+      Height = 29
       Hint = 'Будет также экспортирована раскраска фона'
-      Top = 40
-      Width = 211
+      Top = 32
+      Width = 174
       Caption = 'Раскраска фона'
-      Font.Height = -26
+      Font.Height = -21
       ParentFont = False
       TabOrder = 2
     end
     object cbUseFont: TCheckBox
-      Left = 380
-      Height = 40
+      Left = 304
+      Height = 29
       Hint = 'Будет также экспортирован стиль шрифта'
-      Top = 80
-      Width = 193
+      Top = 64
+      Width = 162
       Caption = 'Стиль шрифта'
-      Font.Height = -26
+      Font.Height = -21
       ParentFont = False
       TabOrder = 3
     end
     object cbUseStr: TCheckBox
-      Left = 380
-      Height = 40
+      Left = 304
+      Height = 29
       Hint = 'При экспорте вместо частов дня будет подставлено другое значение'
-      Top = 120
-      Width = 267
+      Top = 96
+      Width = 216
       Caption = 'Вывод вместо часов'
-      Font.Height = -26
+      Font.Height = -21
       ParentFont = False
       TabOrder = 4
     end
     object edOtherStr: TEdit
-      Left = 380
-      Height = 44
+      Left = 304
+      Height = 33
       Hint = 'Значение, подставляемое вместо часов дня'
-      Top = 160
-      Width = 140
-      Font.Height = -26
+      Top = 128
+      Width = 112
+      Font.Height = -21
       ParentFont = False
       TabOrder = 5
       Text = 'edOtherStr'
     end
     object lb: TListBox
-      Left = 10
-      Height = 396
+      Left = 8
+      Height = 317
       Hint = 'Список типов дней'
       Top = 0
-      Width = 360
-      Font.Height = -26
+      Width = 288
+      Font.Height = -21
       ItemHeight = 0
       OnSelectionChange = lbSelectionChange
       ParentFont = False
       TabOrder = 0
     end
     object cbUseType: TCheckBox
-      Left = 380
-      Height = 40
+      Left = 304
+      Height = 29
       Hint = 'Если отмечено, то данный тип дней будет экспортироваться'
       Top = 0
-      Width = 265
+      Width = 217
       Caption = 'Экспортировать тип'
-      Font.Height = -26
+      Font.Height = -21
       ParentFont = False
       TabOrder = 1
     end
   end
   object btSave: TButton
-    Left = 688
-    Height = 50
+    Left = 550
+    Height = 40
     Hint = 'Сохраняются настройки экспорта.'#13#10'Сам экспорт не происходит'
-    Top = 384
-    Width = 140
+    Top = 307
+    Width = 112
     Caption = 'Сохранить'
-    Font.Height = -26
+    Font.Height = -21
     OnClick = btSaveClick
     ParentFont = False
     TabOrder = 5
   end
   object btExport: TButton
-    Left = 852
-    Height = 50
+    Left = 682
+    Height = 40
     Hint = 'Запускает экспорт'
-    Top = 384
-    Width = 128
+    Top = 307
+    Width = 102
     Caption = 'Экспорт'
-    Font.Height = -26
+    Font.Height = -21
     OnClick = btExportClick
     ParentFont = False
     TabOrder = 6
   end
   object btCancel: TButton
-    Left = 852
-    Height = 50
+    Left = 682
+    Height = 40
     Hint = 'Отмена экспорта'
-    Top = 448
-    Width = 128
+    Top = 358
+    Width = 102
     Cancel = True
     Caption = 'Отмена'
-    Font.Height = -26
+    Font.Height = -21
     OnClick = btCancelClick
     ParentFont = False
     TabOrder = 7
   end
-  object leDocName: TLabeledEdit
-    Left = 305
-    Height = 44
-    Hint = 'Открытый документ, куда будет происходить экспорт'
-    Top = 4
-    Width = 631
-    EditLabel.Height = 36
-    EditLabel.Width = 281
-    EditLabel.Caption = 'Экспортировать в файл'
-    EditLabel.ParentColor = False
-    EditLabel.ParentFont = False
-    EditLabel.Font.Height = -26
-    Font.Height = -26
-    LabelPosition = lpLeft
-    ParentFont = False
-    ReadOnly = True
-    TabOrder = 8
-  end
   object SpeedButton1: TSpeedButton
-    Left = 936
-    Height = 38
+    Left = 749
+    Height = 30
     Hint = 'Выбирает откытый файл Эксел'
-    Top = 8
-    Width = 40
+    Top = 6
+    Width = 32
     Flat = True
-    Font.Height = -26
+    Font.Height = -21
     Glyph.Data = {
       36100000424D3610000000000000360000002800000020000000200000000100
       2000000000000010000064000000640000000000000000000000000000000000
@@ -351,14 +332,40 @@ object frmExpOldXL: TfrmExpOldXL
     ParentFont = False
   end
   object cbOutHours: TCheckBox
-    Left = 688
-    Height = 40
+    Left = 550
+    Height = 29
     Hint = 'Игнорируются все флаги "Вывод вместо часов"'
-    Top = 326
-    Width = 288
+    Top = 261
+    Width = 240
     Caption = 'Всегда выводить часы'
-    Font.Height = -26
+    Font.Height = -21
+    ParentFont = False
+    TabOrder = 8
+  end
+  object cbDocName: TComboBox
+    Left = 244
+    Height = 33
+    Hint = 'Открытый документ, куда будет происходить экспорт'
+    Top = 3
+    Width = 505
+    Font.Height = -21
+    ItemHeight = 25
     ParentFont = False
     TabOrder = 9
+  end
+  object Label1: TLabel
+    Left = 6
+    Height = 25
+    Top = 6
+    Width = 213
+    Caption = 'Шаблон для экспорта'
+    Font.Height = -21
+    ParentColor = False
+    ParentFont = False
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = 'Excel Files|*.xls, *.xlsx'
+    Left = 396
+    Top = 305
   end
 end

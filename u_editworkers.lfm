@@ -1,0 +1,93 @@
+object frmWorkers: TfrmWorkers
+  Left = 595
+  Height = 502
+  Top = 262
+  Width = 488
+  BorderStyle = bsDialog
+  Caption = 'Работники'
+  ClientHeight = 502
+  ClientWidth = 488
+  Font.Height = -19
+  OnClose = FormClose
+  ShowHint = True
+  LCLVersion = '2.0.10.0'
+  object lb: TListBox
+    Left = 8
+    Height = 486
+    Top = 8
+    Width = 264
+    Anchors = [akTop, akLeft, akBottom]
+    ItemHeight = 0
+    Sorted = True
+    TabOrder = 0
+  end
+  object bbNew: TBitBtn
+    Left = 280
+    Height = 39
+    Hint = 'Создает нового работника'#13#10'Фамилия, имя, отчество '#13#10'должны быть уникальными.'
+    Top = 8
+    Width = 200
+    Caption = 'Новый...'
+    OnClick = bbNewClick
+    TabOrder = 1
+  end
+  object bbDel: TBitBtn
+    Left = 280
+    Height = 39
+    Hint = 'Удаляет работника из списка'#13#10'Если работник есть в каких то '#13#10'графиках, то произойдет ошибка'
+    Top = 56
+    Width = 200
+    Caption = 'Удалить'
+    OnClick = bbDelClick
+    TabOrder = 2
+  end
+  object bbRename: TBitBtn
+    Left = 280
+    Height = 39
+    Hint = 'Переименовывает работника. Если '#13#10'работник с такими же фамилией, именем '#13#10'и отчеством уже существует, то '#13#10'произойдет ошибка.'
+    Top = 104
+    Width = 200
+    Caption = 'Переименовать'
+    OnClick = bbRenameClick
+    TabOrder = 3
+  end
+  object bbToFile: TBitBtn
+    Left = 280
+    Height = 39
+    Hint = 'Сохраняет список работников в файл'
+    Top = 184
+    Width = 200
+    Caption = 'Сохранить в файл...'
+    OnClick = bbToFileClick
+    TabOrder = 4
+  end
+  object bbFromFile: TBitBtn
+    Left = 280
+    Height = 39
+    Hint = 'Загружает список работников из файла'#13#10'Содержимое файла добавляется к текущему'#13#10'списку работников. Если в процессе загрузки '#13#10'будет обнаружен работник с фамилией, '#13#10'имененм, отчестком, уже существующим,'#13#10'то произойдет ошибка.'#13#10
+    Top = 232
+    Width = 200
+    Caption = 'Загрузить из файла...'
+    OnClick = bbFromFileClick
+    TabOrder = 5
+  end
+  object bbClose: TBitBtn
+    Left = 280
+    Height = 39
+    Hint = 'Закрывает окно'
+    Top = 455
+    Width = 200
+    DefaultCaption = True
+    Kind = bkClose
+    ModalResult = 11
+    TabOrder = 6
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 372
+    Top = 298
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 372
+    Top = 352
+  end
+end

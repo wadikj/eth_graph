@@ -1,8 +1,8 @@
 object frmEditActions: TfrmEditActions
   Left = 182
-  Height = 512
+  Height = 410
   Top = 127
-  Width = 1560
+  Width = 1248
   HorzScrollBar.Page = 657
   HorzScrollBar.Range = 657
   VertScrollBar.Page = 353
@@ -10,167 +10,166 @@ object frmEditActions: TfrmEditActions
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Настройка быстрого ввода'
-  ClientHeight = 512
-  ClientWidth = 1560
-  DesignTimePPI = 120
-  Font.Height = -26
+  ClientHeight = 410
+  ClientWidth = 1248
+  Font.Height = -21
   ShowHint = True
   LCLVersion = '2.0.10.0'
   object Label1: TLabel
-    Left = 10
-    Height = 36
-    Top = 10
-    Width = 203
+    Left = 8
+    Height = 25
+    Top = 8
+    Width = 165
     Caption = 'Список действий'
-    Font.Height = -26
+    Font.Height = -21
     ParentColor = False
     ParentFont = False
   end
   object lb: TListBox
-    Left = 10
-    Height = 391
+    Left = 8
+    Height = 313
     Hint = 'Список созданных действий редактирования графика'
-    Top = 50
-    Width = 330
+    Top = 40
+    Width = 264
     Anchors = [akTop, akLeft, akBottom]
-    Font.Height = -26
+    Font.Height = -21
     ItemHeight = 0
     OnSelectionChange = lbSelectionChange
     ParentFont = False
     TabOrder = 0
   end
-  object btClose: TButton
-    Left = 668
-    Height = 50
+  object Button1: TButton
+    Left = 534
+    Height = 40
     Hint = 'Закрывет форму редактирования действий'
-    Top = 450
-    Width = 154
+    Top = 360
+    Width = 123
     Anchors = [akLeft, akBottom]
     Cancel = True
     Caption = 'Закрыть'
-    Font.Height = -26
+    Font.Height = -21
     ModalResult = 2
     ParentFont = False
     TabOrder = 5
   end
   object gbActions: TGroupBox
-    Left = 360
-    Height = 431
-    Top = 10
-    Width = 461
+    Left = 288
+    Height = 345
+    Top = 8
+    Width = 369
     Caption = 'Редактирование действия'
-    ClientHeight = 390
-    ClientWidth = 457
-    Font.Height = -26
+    ClientHeight = 315
+    ClientWidth = 365
+    Font.Height = -21
     ParentFont = False
     TabOrder = 3
     object leName: TLabeledEdit
-      Left = 10
-      Height = 44
+      Left = 8
+      Height = 33
       Hint = 'Название действия - отображается в меню'
-      Top = 30
-      Width = 430
-      EditLabel.Height = 36
-      EditLabel.Width = 430
+      Top = 24
+      Width = 344
+      EditLabel.Height = 25
+      EditLabel.Width = 344
       EditLabel.Caption = 'Название действия'
       EditLabel.ParentColor = False
       EditLabel.ParentFont = False
-      EditLabel.Font.Height = -26
-      Font.Height = -26
+      EditLabel.Font.Height = -21
+      Font.Height = -21
       ParentFont = False
       TabOrder = 0
       Text = 'leName'
     end
     object leKey: TLabeledEdit
-      Left = 10
-      Height = 44
+      Left = 8
+      Height = 33
       Hint = 'Быстрая клавиша для вызова действия'#13#10'Можно использовать латинские буквы '#13#10'и названия служебгных клавиш, '#13#10'например, Ctrl+F5'
-      Top = 120
-      Width = 430
-      EditLabel.Height = 36
-      EditLabel.Width = 430
+      Top = 96
+      Width = 344
+      EditLabel.Height = 25
+      EditLabel.Width = 344
       EditLabel.Caption = 'Быстрая клавиша'
       EditLabel.ParentColor = False
       EditLabel.ParentFont = False
-      EditLabel.Font.Height = -26
-      Font.Height = -26
+      EditLabel.Font.Height = -21
+      Font.Height = -21
       ParentFont = False
       TabOrder = 1
       Text = 'leKey'
     end
     object leAction: TLabeledEdit
-      Left = 10
-      Height = 44
+      Left = 8
+      Height = 33
       Hint = 'Скрипт для выполнения действия'
-      Top = 200
-      Width = 430
-      EditLabel.Height = 36
-      EditLabel.Width = 430
+      Top = 160
+      Width = 344
+      EditLabel.Height = 25
+      EditLabel.Width = 344
       EditLabel.Caption = 'Действие'
       EditLabel.ParentColor = False
       EditLabel.ParentFont = False
-      EditLabel.Font.Height = -26
-      Font.Height = -26
+      EditLabel.Font.Height = -21
+      Font.Height = -21
       ParentFont = False
       TabOrder = 2
       Text = 'leAction'
     end
-    object btHelp: TButton
-      Left = 10
-      Height = 50
+    object Button2: TButton
+      Left = 8
+      Height = 40
       Hint = 'Показывает справку по формату строки действия'
-      Top = 330
-      Width = 190
+      Top = 264
+      Width = 152
       Caption = 'Справка'
-      Font.Height = -26
-      OnClick = btHelpClick
+      Font.Height = -21
+      OnClick = Button2Click
       ParentFont = False
       TabOrder = 6
     end
-    object btSave: TButton
-      Left = 300
-      Height = 50
+    object Button3: TButton
+      Left = 240
+      Height = 40
       Hint = 'Сохраняет отредактированное действие'
-      Top = 328
-      Width = 140
+      Top = 262
+      Width = 112
       Caption = 'Сохранить'
-      Font.Height = -26
-      OnClick = btSaveClick
+      Font.Height = -21
+      OnClick = Button3Click
       ParentFont = False
       TabOrder = 5
     end
     object cbUse: TCheckBox
-      Left = 10
-      Height = 40
+      Left = 8
+      Height = 29
       Hint = 'Действие активно, будет вызвано при нажатии '#13#10'быстрой клавиши или выбора пункта меню'
-      Top = 250
-      Width = 190
+      Top = 200
+      Width = 154
       Caption = 'Использовать'
-      Font.Height = -26
+      Font.Height = -21
       OnChange = cbUseChange
       ParentFont = False
       TabOrder = 3
     end
     object cbView: TCheckBox
-      Left = 10
-      Height = 40
+      Left = 8
+      Height = 29
       Hint = 'Действие будет показао на панели QInput'
-      Top = 290
-      Width = 274
+      Top = 232
+      Width = 225
       Caption = 'Показывать в QInput'
-      Font.Height = -26
+      Font.Height = -21
       ParentFont = False
       TabOrder = 4
     end
   end
   object mmHelp: TMemo
-    Left = 840
-    Height = 482
+    Left = 672
+    Height = 386
     Hint = 'Справка по созланию строк действий'
-    Top = 18
-    Width = 710
+    Top = 14
+    Width = 568
     Anchors = [akTop, akLeft, akRight, akBottom]
-    Font.Height = -26
+    Font.Height = -21
     Lines.Strings = (
       'Формат строки действия'
       '  f:N:параметры - заполняет ячейки таблицы параметрами'
@@ -212,29 +211,29 @@ object frmEditActions: TfrmEditActions
     TabOrder = 4
     TabStop = False
   end
-  object btNew: TButton
-    Left = 10
-    Height = 50
+  object Button4: TButton
+    Left = 8
+    Height = 40
     Hint = 'Создает новое действие'
-    Top = 451
-    Width = 150
+    Top = 361
+    Width = 120
     Anchors = [akLeft, akBottom]
     Caption = 'Новый'
-    Font.Height = -26
-    OnClick = btNewClick
+    Font.Height = -21
+    OnClick = Button4Click
     ParentFont = False
     TabOrder = 1
   end
-  object btDel: TButton
-    Left = 190
-    Height = 50
+  object Button5: TButton
+    Left = 152
+    Height = 40
     Hint = 'Удаляет выбранное действие'
-    Top = 450
-    Width = 150
+    Top = 360
+    Width = 120
     Anchors = [akLeft, akBottom]
     Caption = 'Удалить'
-    Font.Height = -26
-    OnClick = btDelClick
+    Font.Height = -21
+    OnClick = Button5Click
     ParentFont = False
     TabOrder = 2
   end

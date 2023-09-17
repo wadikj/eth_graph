@@ -260,7 +260,7 @@ end;
 procedure TfrmSumm.CheckDataYear;
 var XYear:Integer;
 begin
-  //проверяет, какой год открыт в графике, и если не совпадает с текущим для таблицы, то
+  //проверяет, какой год открыт в графике, и если не совпадлает с текущим для таблицы, то
   //переоткрывеает нужные данные
   if frmTable.GraphData=nil then Exit;
   XYear:=frmTable.GraphData.CurrYear;

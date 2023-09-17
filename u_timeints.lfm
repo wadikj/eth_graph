@@ -1,78 +1,89 @@
 object frmHours: TfrmHours
-  Left = 614
-  Height = 685
-  Top = 157
-  Width = 917
+  Left = 386
+  Height = 548
+  Top = 83
+  Width = 820
   BorderStyle = bsDialog
   Caption = 'Времена работ'
-  ClientHeight = 685
-  ClientWidth = 917
-  DesignTimePPI = 120
-  Font.Height = -28
+  ClientHeight = 548
+  ClientWidth = 820
+  Font.Height = -22
   OnClose = FormClose
   ShowHint = True
   LCLVersion = '2.0.10.0'
   object Label1: TLabel
-    Left = 8
-    Height = 38
-    Top = 8
-    Width = 137
+    Left = 6
+    Height = 27
+    Top = 6
+    Width = 107
     Caption = 'Типы дней'
-    Font.Height = -28
+    Font.Height = -22
     ParentColor = False
     ParentFont = False
   end
   object btClose: TButton
-    Left = 767
-    Height = 56
+    Left = 704
+    Height = 45
     Hint = 'Закрывает форму'
-    Top = 616
-    Width = 137
+    Top = 496
+    Width = 110
     Cancel = True
     Caption = 'Закрыть'
-    Font.Height = -28
+    Font.Height = -22
     OnClick = btCloseClick
     ParentFont = False
     TabOrder = 0
   end
   object lbTypes: TListBox
-    Left = 8
-    Height = 624
-    Hint = 'Список доступных типов дней в программе'
-    Top = 48
-    Width = 389
+    Left = 6
+    Height = 499
+    Hint = 'Список доступных флагов в программе'
+    Top = 38
+    Width = 311
+    Font.Height = -22
     ItemHeight = 0
     OnSelectionChange = lbTypesSelectionChange
+    ParentFont = False
     TabOrder = 1
   end
   object PageControl1: TPageControl
-    Left = 408
-    Height = 602
-    Top = 8
-    Width = 496
+    Left = 326
+    Height = 482
+    Top = 6
+    Width = 493
     ActivePage = tsTimes
+    Font.Height = -22
+    ParentFont = False
     TabIndex = 0
     TabOrder = 2
     object tsTimes: TTabSheet
       Caption = 'Времена'
-      ClientHeight = 551
-      ClientWidth = 488
+      ClientHeight = 442
+      ClientWidth = 485
+      Font.Height = -22
+      ParentFont = False
       object lvTimes: TListView
-        Left = 8
-        Height = 364
+        Left = 6
+        Height = 291
         Hint = 'Список текстов ячеек и связанных '#13#10'с ними режимов работ'
-        Top = 16
-        Width = 465
+        Top = 13
+        Width = 476
         Columns = <        
           item
             Caption = 'Часы'
-            Width = 120
+            Width = 96
           end        
           item
             Caption = 'Рабочее время'
-            Width = 300
+            Width = 240
+          end        
+          item
+            Caption = 'Отобр.'
+            Width = 100
           end>
+        Font.Height = -22
         HideSelection = False
+        ParentFont = False
         ReadOnly = True
         RowSelect = True
         TabOrder = 0
@@ -80,89 +91,122 @@ object frmHours: TfrmHours
         OnSelectItem = lvTimesSelectItem
       end
       object leHours: TLabeledEdit
-        Left = 8
-        Height = 46
+        Left = 6
+        Height = 35
         Hint = 'Часы (текст) дня'
-        Top = 424
-        Width = 144
-        EditLabel.Height = 38
-        EditLabel.Width = 144
+        Top = 339
+        Width = 115
+        EditLabel.Height = 27
+        EditLabel.Width = 115
         EditLabel.Caption = 'Часы'
         EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        EditLabel.Font.Height = -22
+        Font.Height = -22
+        ParentFont = False
         TabOrder = 1
         Text = 'leHours'
       end
       object btDelTimes: TButton
-        Left = 8
-        Height = 56
+        Left = 6
+        Height = 45
         Hint = 'Удаляем выделенный элемент'
-        Top = 488
-        Width = 134
+        Top = 390
+        Width = 107
         Caption = 'Удалить'
-        Font.Height = -28
+        Font.Height = -22
         OnClick = btDelTimesClick
         ParentFont = False
         TabOrder = 2
       end
       object btSetTimes: TButton
-        Left = 339
-        Height = 56
+        Left = 375
+        Height = 45
         Hint = 'Задает (изменяет или создает новое '#13#10'сопоставление текст дня-время работ'
-        Top = 488
-        Width = 134
+        Top = 390
+        Width = 107
         Caption = 'Задать'
-        Font.Height = -28
+        Font.Height = -22
         OnClick = btSetTimesClick
         ParentFont = False
         TabOrder = 3
       end
       object leTimes: TLabeledEdit
-        Left = 176
-        Height = 46
+        Left = 128
+        Height = 35
         Hint = 'Время работы, сопоставленное с данным '#13#10'текстом(рабочим временем)'
-        Top = 424
-        Width = 297
-        EditLabel.Height = 38
-        EditLabel.Width = 297
+        Top = 339
+        Width = 238
+        EditLabel.Height = 27
+        EditLabel.Width = 238
         EditLabel.Caption = 'Рабочее время'
         EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        EditLabel.Font.Height = -22
+        Font.Height = -22
+        ParentFont = False
         TabOrder = 4
         Text = 'leTimes'
+      end
+      object leOt: TLabeledEdit
+        Left = 374
+        Height = 35
+        Hint = 'Время работы, сопоставленное с данным '#13#10'текстом(рабочим временем)'
+        Top = 339
+        Width = 108
+        EditLabel.Height = 27
+        EditLabel.Width = 108
+        EditLabel.Caption = 'Отобр.'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        EditLabel.Font.Height = -22
+        Font.Height = -22
+        ParentFont = False
+        TabOrder = 5
+        Text = 'leOt'
       end
     end
     object tsNonTimes: TTabSheet
       Caption = 'Без времен'
-      ClientHeight = 551
-      ClientWidth = 488
+      ClientHeight = 442
+      ClientWidth = 485
+      Font.Height = -22
+      ParentFont = False
       object cbUse: TCheckBox
-        Left = 16
-        Height = 42
+        Left = 13
+        Height = 31
         Hint = 'При установке этого флага при экспорте в '#13#10'именной график в дне с данным типом '#13#10'всегда будет стоять ниже указанный текст'#13#10'Времена работ не будут использоваться'
-        Top = 16
-        Width = 422
+        Top = 13
+        Width = 340
         Caption = 'Всегда выводить вместо текста'
+        Font.Height = -22
+        ParentFont = False
         TabOrder = 0
       end
       object leText: TLabeledEdit
-        Left = 16
-        Height = 46
+        Left = 13
+        Height = 35
         Hint = 'Текст для типа дня в именном графике'
-        Top = 104
-        Width = 248
-        EditLabel.Height = 38
-        EditLabel.Width = 248
+        Top = 83
+        Width = 438
+        EditLabel.Height = 27
+        EditLabel.Width = 438
         EditLabel.Caption = 'Выводимый текст'
         EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        EditLabel.Font.Height = -22
+        Font.Height = -22
+        ParentFont = False
         TabOrder = 1
         Text = 'leText'
       end
       object btSetNonTimes: TButton
-        Left = 16
-        Height = 56
-        Top = 176
-        Width = 134
+        Left = 13
+        Height = 45
+        Top = 141
+        Width = 107
         Caption = 'Задать'
-        Font.Height = -28
+        Font.Height = -22
         OnClick = btSetNonTimesClick
         ParentFont = False
         TabOrder = 2

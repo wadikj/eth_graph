@@ -1,0 +1,32 @@
+object DM: TDM
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 259
+  HorizontalOffset = -397
+  VerticalOffset = 201
+  Width = 260
+  object conn: TSQLite3Connection
+    Connected = False
+    LoginPrompt = False
+    DatabaseName = 'E:\Projects\eth_graph\echc.sqlite'
+    KeepConnection = False
+    Transaction = tr
+    AlwaysUseBigint = False
+    Left = 30
+    Top = 19
+  end
+  object tr: TSQLTransaction
+    Active = False
+    Database = conn
+    Left = 29
+    Top = 80
+  end
+  object qu: TSQLQuery
+    FieldDefs = <>
+    Database = conn
+    Transaction = tr
+    Params = <>
+    Left = 29
+    Top = 144
+  end
+end

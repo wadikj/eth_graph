@@ -1,0 +1,128 @@
+object frmGtypes: TfrmGtypes
+  Left = 526
+  Height = 381
+  Top = 413
+  Width = 622
+  Caption = 'Типы графиков'
+  ClientHeight = 381
+  ClientWidth = 622
+  Font.Height = -19
+  OnClose = FormClose
+  ShowHint = True
+  LCLVersion = '2.0.10.0'
+  object lv: TListView
+    Left = 8
+    Height = 360
+    Top = 8
+    Width = 416
+    Columns = <    
+      item
+        Caption = 'Название типа'
+        Width = 250
+      end    
+      item
+        Caption = 'Пор.'
+        Width = 70
+      end    
+      item
+        Caption = 'Расч.'
+        Width = 70
+      end>
+    Font.Height = -19
+    HideSelection = False
+    ParentFont = False
+    ReadOnly = True
+    RowSelect = True
+    SortColumn = 0
+    SortType = stData
+    TabOrder = 0
+    ViewStyle = vsReport
+    OnCompare = lvCompare
+    OnCreateItemClass = lvCreateItemClass
+    OnSelectItem = lvSelectItem
+  end
+  object btNew: TButton
+    Left = 440
+    Height = 33
+    Hint = 'Создание типа графика'
+    Top = 8
+    Width = 163
+    Caption = 'Новый'
+    Font.Height = -19
+    OnClick = btNewClick
+    ParentFont = False
+    TabOrder = 1
+  end
+  object btDel: TButton
+    Left = 440
+    Height = 33
+    Hint = 'Удаление типа графика.'#13#10'Удаление возможно при '#13#10'условии отсутствия графиков '#13#10'этого типа'
+    Top = 56
+    Width = 163
+    Caption = 'Удалить'
+    Font.Height = -19
+    OnClick = btDelClick
+    ParentFont = False
+    TabOrder = 2
+  end
+  object btRename: TButton
+    Left = 440
+    Height = 33
+    Hint = 'Переименование типа графика'
+    Top = 104
+    Width = 163
+    Caption = 'Переименовать'
+    Font.Height = -19
+    OnClick = btRenameClick
+    ParentFont = False
+    TabOrder = 3
+  end
+  object btSetOrdered: TButton
+    Left = 440
+    Height = 33
+    Hint = 'Устанавливает/сбрасывает разрешение '#13#10'ведения сводных таблиц по данному '#13#10'типу графиков'
+    Top = 152
+    Width = 163
+    Caption = 'btSetOrdered'
+    Font.Height = -19
+    OnClick = btSetOrderedClick
+    ParentFont = False
+    TabOrder = 4
+  end
+  object bbUp: TBitBtn
+    Left = 440
+    Height = 33
+    Hint = 'Повышает позицию типа графиков'
+    Top = 216
+    Width = 163
+    Caption = 'Вверх'
+    Font.Height = -19
+    OnClick = bbUpClick
+    ParentFont = False
+    TabOrder = 5
+  end
+  object bbDown: TBitBtn
+    Left = 440
+    Height = 33
+    Hint = 'Понижает позицию типа графиков'
+    Top = 264
+    Width = 163
+    Caption = 'Вниз'
+    Font.Height = -19
+    OnClick = bbDownClick
+    ParentFont = False
+    TabOrder = 6
+  end
+  object bbClose: TBitBtn
+    Left = 440
+    Height = 33
+    Hint = 'Закрывает окно'
+    Top = 335
+    Width = 163
+    Caption = 'Закрыть'
+    Font.Height = -19
+    ModalResult = 1
+    ParentFont = False
+    TabOrder = 7
+  end
+end

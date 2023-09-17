@@ -1,12 +1,12 @@
 object frmNewGr: TfrmNewGr
-  Left = 616
+  Left = 338
   Height = 328
-  Top = 308
-  Width = 454
+  Top = 188
+  Width = 455
   BorderStyle = bsDialog
   Caption = 'Новый график'
   ClientHeight = 328
-  ClientWidth = 454
+  ClientWidth = 455
   DesignTimePPI = 120
   Font.Height = -26
   ShowHint = True

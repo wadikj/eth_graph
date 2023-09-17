@@ -35,19 +35,23 @@ type
 var
   frmOpenFF: TfrmOpenFF;
 
-procedure OpenFileFolder(AFile:Boolean);
+function OpenFileFolder(AFile:Boolean):string;
 
 implementation
 
 uses u_options, Windows;
 
-procedure OpenFileFolder(AFile: Boolean);
+function OpenFileFolder(AFile: Boolean): string;
 begin
+  Result:='';
   Application.CreateForm(TfrmOpenFF,frmOpenFF);
   frmOpenFF.FFile:=AFile;
   frmOpenFF.InitForm;
   frmOpenFF.ShowModal;
   frmOpenFF.CloseForm;
+  if frmOpenFF.ListBox1.ItemIndex<>-1 then begin
+    Result:=frmOpenFF.ListBox1.Items[frmOpenFF.ListBox1.ItemIndex];
+  end;
   FreeAndNil(frmOpenFF);
 end;
 
@@ -86,7 +90,7 @@ begin
   FModified:=False;
   if FFile then begin
     ListBox1.Items.Assign(Options.FFiles);
-    Caption:='Список файлов';
+    Caption:='Список шаблонов файлов для вывода графиков';
   end
   else
     ListBox1.Items.Assign(Options.FFolders);
