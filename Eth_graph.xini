@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <options>
-  <data gTSSM="2,3,4,5,8,9,10,11" sCols="С,А" gColSM="13429996" gColVih="13882323" gShowMP="False" DaysLine="10" FirstDay="3" xMansCol="2" xMansRow="86" gFirstCol="190" gFontName="Tahoma" gFontSize="15" xFirstCol="3" xFirstRow="18" DefDataDir="E:\Projects\eth_graph\Data" DefImpYear="2021" DefImpMonth="6" FirstWorker="15" gSetOnlyUnk="False" gDefColWidth="48" xMansColName="5" xMansColTime="3" gDefRowHeight="38" gShowDefChars="False" AlwaysUseHours="False" DefWorkerCount="18" UseWeekendColors="True">
+  <data gTSSM="4,5,6,7,12,13,14,15" sCols="С,Н,А" DBPath="C:\Projects\ETH_GRAPH\demo.sqlite" PyPath="py" ScrDir=".\check\" gColSM="13429996" ShowLog="False" gColVih="13882323" gShowMP="False" DaysLine="10" FirstDay="3" xMansCol="2" xMansRow="86" gFirstCol="180" gFontName="Tahoma" gFontSize="14" xFirstCol="3" xFirstRow="18" DefDataDir="E:\Projects\eth_graph\Data" DefImpYear="2021" gShowHours="False" DefImpMonth="6" FirstWorker="15" gSetOnlyUnk="False" gDefColWidth="45" xMansColName="5" xMansColTime="3" xNewTemplate="E:\Projects\eth_graph\Data\ГРАФИК именной бланк11111.xlsx" xOldTemplate="C:\ETH_GRAPH\Templates\график бланк.xlsx" gDefRowHeight="32" gShowDefChars="False" AlwaysUseHours="False" DefWorkerCount="18" UseWeekendColors="True" XUseLastNewTempl="False" xUseLastOldTempl="False">
     <OEDayRules>
       <i AType="dtUnk" UseBG="False" UseStr="False" USeFont="False" Exported="False" OtherStr=""/>
       <i AType="dtNightFirst" UseBG="False" UseStr="False" USeFont="False" Exported="True" OtherStr=""/>
@@ -21,15 +21,16 @@
       <i AType="dtLine" UseBG="False" UseStr="True" USeFont="False" Exported="True" OtherStr="Л"/>
       <i AType="dtLocked" UseBG="False" UseStr="False" USeFont="False" Exported="False" OtherStr=""/>
       <i AType="dtDisease" UseBG="False" UseStr="False" USeFont="False" Exported="False" OtherStr=""/>
+      <i AType="dtExtraDay" UseBG="False" UseStr="False" USeFont="False" Exported="False" OtherStr=""/>
     </OEDayRules>
     <gExtraCols>
-      <i Visible="True" DayTypes="[dtNightFirst,dtNightLast,dtDay,dtOtp,dt2Night,dtMed]" LongName="Смены" UseCount="False" ShortName="С" SavedHours="10!12|10!12"/>
+      <i Visible="True" DayTypes="[dtNightFirst,dtNightLast,dtDay,dtOtp,dtZam,dt2Night,dtMed,dtLearn,dtExtraDay]" LongName="Смены" UseCount="False" ShortName="С" SavedHours="10!12|10!12"/>
       <i Visible="True" DayTypes="[dtVih]" LongName="Выходные" UseCount="True" ShortName="В" SavedHours=""/>
       <i Visible="True" DayTypes="[dtNightFirst,dtNightLast,dt2Night]" LongName="Ночные" UseCount="False" ShortName="Н" SavedHours="1!2|2!6|10!8"/>
-      <i Visible="True" DayTypes="[dtNightFirst,dtNightLast,dtDay,dtOHT,dtTU,dtOtp,dtZam,dt2Night,dtOther,dtEzhedn,dtMed,dtLearn,dtLine]" LongName="Все часы" UseCount="False" ShortName="А" SavedHours="10!12|10!12"/>
+      <i Visible="True" DayTypes="[dtNightFirst,dtNightLast,dtDay,dtOHT,dtTU,dtOtp,dtZam,dt2Night,dtOther,dtEzhedn,dtMed,dtLearn,dtLine,dtExtraDay]" LongName="Все часы" UseCount="False" ShortName="А" SavedHours="10!12|10!12"/>
     </gExtraCols>
     <gExtraRows>
-      <i Visible="True" DayTypes="[dtNightFirst,dtNightLast,dtDay]" LongName="Часов в день" UseCount="False" ShortName="Часов в день" SavedHours=""/>
+      <i Visible="True" DayTypes="[dtNightFirst,dtNightLast,dtDay,dt2Night]" LongName="Часов в день" UseCount="False" ShortName="Часов в день" SavedHours="10!12"/>
       <i Visible="False" DayTypes="[dtDay]" LongName="Дневн смена" UseCount="True" ShortName="Дневн смена" SavedHours=""/>
       <i Visible="False" DayTypes="[dtNightFirst]" LongName="Ночи начало" UseCount="True" ShortName="Ночи начало" SavedHours=""/>
       <i Visible="False" DayTypes="[dtNightLast]" LongName="Ночи конец" UseCount="True" ShortName="Ночи конец" SavedHours=""/>
@@ -41,80 +42,67 @@
       <i Txt="" Use="False"/>
       <i Txt="" Use="False"/>
       <i Txt="" Use="False"/>
+      <i Txt="ОТ" Use="True"/>
+      <i Txt="" Use="False"/>
+      <i Txt="В" Use="True"/>
+      <i Txt="МП" Use="True"/>
       <i Txt="" Use="False"/>
       <i Txt="" Use="False"/>
+      <i Txt="ФВ" Use="True"/>
       <i Txt="" Use="False"/>
       <i Txt="" Use="False"/>
-      <i Txt="" Use="False"/>
-      <i Txt="" Use="False"/>
-      <i Txt="" Use="False"/>
-      <i Txt="" Use="False"/>
-      <i Txt="" Use="False"/>
+      <i Txt="У" Use="True"/>
       <i Txt="" Use="False"/>
       <i Txt="" Use="False"/>
       <i Txt="" Use="False"/>
       <i Txt="" Use="False"/>
     </xTextOnly>
+    <Scripts>
+      <i Hint="Сравнивает текущий график с переданным из ЕКАСУТР" Name="ЕКАСУТР -&gt; График" FileName="checkkamasutra.py"/>
+      <i Hint="Создает данные, пригодные для вставки в ЕКАСУТР " Name="График -&gt; ЕКАСУТР" FileName="c_input.py"/>
+      <i Hint="Проверяет текущий график на правильность введения отсутствий" Name="Проверка отсутствий" FileName="checkabsenses.py"/>
+    </Scripts>
   </data>
   <strings>
-    <workers>
-      <s v="Абрамов А.А"/>
-      <s v="Борисов Б.Б"/>
-      <s v="Васильев В.В."/>
-      <s v="Галкин Г.Г."/>
-      <s v="Данилов Д.Д."/>
-      <s v="Ефремов  Е.Е"/>
-      <s v="Иванов И.И."/>
-      <s v="Костин К.К."/>
-      <s v="Лазарев Л.Л."/>
-      <s v="Михайленко М.М."/>
-      <s v="Николаев Н.Н."/>
-      <s v="Олегов О.О."/>
-      <s v="Петров П.П."/>
-      <s v="Романов Р.Р."/>
-      <s v="Сидоров С.С."/>
-      <s v="Тимофеев Т.Т."/>
-      <s v="Федоров Ф.Ф."/>
-      <s v="Харитонов Х.Х."/>
-    </workers>
     <dayhours0/>
     <dayhours1>
-      <s v="4=19:30-24:00"/>
+      <s v="4=19:30-24:00|4,5"/>
     </dayhours1>
     <dayhours2>
-      <s v="8=00:00-7:30"/>
+      <s v="8=00:00-7:30|7,5"/>
     </dayhours2>
     <dayhours3>
-      <s v="1=7:30-8:30"/>
-      <s v="10=7:30-17:30"/>
-      <s v="11=7:30-18:30"/>
+      <s v="1=8:00-9:00"/>
+      <s v="10=8:00-18:00"/>
+      <s v="11=8:00-19:00"/>
       <s v="12=7:30-19:30"/>
-      <s v="2=7:30-9:30"/>
-      <s v="3=7:30-10:30"/>
-      <s v="4=7:30-11:30"/>
-      <s v="5=7:30-12:30"/>
-      <s v="6=7:30-13:30"/>
-      <s v="7=7:30-14:30"/>
-      <s v="8=7:30-15:30"/>
-      <s v="9=7:30-16:30"/>
+      <s v="2=8:00-10:00"/>
+      <s v="3=8:00-11:00"/>
+      <s v="4=8:00-12:00"/>
+      <s v="5=8:00-13:00"/>
+      <s v="6=8:00-14:00"/>
+      <s v="7=8:00-15:00"/>
+      <s v="8=8:00-16:00"/>
+      <s v="9=8:00-17:00"/>
     </dayhours3>
     <dayhours4>
-      <s v="2=7:30-9:30"/>
-      <s v="3=7:30-10:30"/>
-      <s v="4=7:30-11:30"/>
-      <s v="5=7:30-12:30"/>
-      <s v="6=7:30-13:30"/>
-      <s v="7=7:30-14:30"/>
-      <s v="8=7:30-15:30"/>
+      <s v="2=8:00-10:00"/>
+      <s v="3=8:00-11:00"/>
+      <s v="4=8:00-12:00"/>
+      <s v="5=8:00-13:00"/>
+      <s v="6=8:00-14:00"/>
+      <s v="7=8:00-15:00"/>
+      <s v="8=8:00-16:00"/>
     </dayhours4>
     <dayhours5>
-      <s v="2=7:30-9:30"/>
-      <s v="3=7:30-10:30"/>
-      <s v="4=7:30-11:30"/>
-      <s v="5=7:30-12:30"/>
-      <s v="6=7:30-13:30"/>
-      <s v="7=7:30-14:30"/>
-      <s v="8=7:30-15:30"/>
+      <s v="11=8:00-19:00"/>
+      <s v="2=8:00-10:00"/>
+      <s v="3=8:00-11:00"/>
+      <s v="4=8:00-12:00"/>
+      <s v="5=8:00-13:00"/>
+      <s v="6=8:00-14:00"/>
+      <s v="7=8:00-15:00"/>
+      <s v="8=8:00-16:00"/>
     </dayhours5>
     <dayhours6>
       <s v="="/>
@@ -135,9 +123,14 @@
       <s v="МП="/>
       <s v="мп="/>
     </dayhours9>
-    <dayhours10/>
+    <dayhours10>
+      <s v="12=20:00 24:00-0:00 8:00"/>
+      <s v="4 8=20:00 24:00-0:00 8:00"/>
+    </dayhours10>
     <dayhours11>
+      <s v="12=8:00-20:00"/>
       <s v="4=8:00-12:00"/>
+      <s v="6=8:00-14:00"/>
       <s v="8=8:00-17:00"/>
     </dayhours11>
     <dayhours12>
@@ -152,19 +145,20 @@
       <s v="16777215,0,0,"/>
       <s v="8454143,0,0,"/>
       <s v="6745759,0,0,"/>
-      <s v="16777215,0,0,ОТ"/>
+      <s v="16759225,0,0,ОТ"/>
       <s v="65280,0,0,"/>
       <s v="16777215,0,1,В"/>
       <s v="16777215,0,0,"/>
-      <s v="16777215,0,0,4 8"/>
+      <s v="16763647,0,0,8 4"/>
       <s v="12632256,0,4,"/>
       <s v="16777215,0,0,ФВ"/>
       <s v="16777215,0,0,"/>
       <s v="16755370,0,4,К"/>
-      <s v="65280,0,0,"/>
+      <s v="65280,0,0,УО"/>
       <s v="16711935,0,0,"/>
       <s v="16744576,0,0,R"/>
-      <s v="16777215,0,0,"/>
+      <s v="16777215,16711935,6,"/>
+      <s v="8454143,8388863,1,"/>
     </daystyles>
     <actions>
       <s v="День@90@f:1:12!3@1@1"/>
@@ -180,10 +174,17 @@
       <s v="8=8:00-16:00"/>
     </dayhours14>
     <dayhours15>
+      <s v="="/>
+      <s v="12=7:30-19:30"/>
+      <s v="4=19:30-24:00"/>
       <s v="7=8:00-15:00"/>
-      <s v="8=8:00-16:00"/>
+      <s v="8=00:00-7:30"/>
     </dayhours15>
     <dayhours16>
+      <s v="10=8:00-18:00"/>
+      <s v="11=8:00-19:00"/>
+      <s v="12=8:00-20:30"/>
+      <s v="2=8:00-10:00"/>
       <s v="4=8:00-12:00"/>
       <s v="5=8:00-13:00"/>
       <s v="6=8:00-14:00"/>
@@ -193,26 +194,40 @@
     <dayhours17/>
     <files>
       <s v="C:\ETH_GRAPH\Templates\график бланк.xlsx"/>
-      <s v="C:\ETH_GRAPH\Templates\ГРАФИК именной бланк.xlsx"/>
     </files>
     <folders>
-      <s v="C:\ETH_GRAPH\Templates"/>
+      <s v="E:\WadikJ\ГРАФИКИ\графики 2021"/>
+      <s v="E:\Projects\eth_graph\Data"/>
     </folders>
     <mru>
-      <s v="C:\ETH_GRAPH\Examples\январь 2022 план.gr"/>
-      <s v="C:\ETH_GRAPH\Examples\март 2022 план.gr"/>
-      <s v="C:\ETH_GRAPH\Examples\февраль 2022 план.gr"/>
+      <s v="E:\Projects\eth_graph\Data\2023\март факт 2023 камасутра.gr"/>
+      <s v="E:\Projects\eth_graph\Data\2023\февраль факт 2023 камасутра.gr"/>
+      <s v="E:\Projects\eth_graph\Data\2023\январь факт 2023.gr"/>
+      <s v="E:\Projects\eth_graph\Data\2023\январь план 2023 камасутра.gr"/>
+      <s v="E:\Projects\eth_graph\Data\январь факт 2023 камасутра печать.gr"/>
+      <s v="E:\Projects\eth_graph\Data\2023\1 кв план\март плвн 2023 камасутра печать.gr"/>
+      <s v="E:\Projects\eth_graph\Data\2023\1 кв план\февраль план 2023.gr"/>
+      <s v="E:\Projects\eth_graph\Data\2023\1 кв план\январь план 2023 камасутра печать.gr"/>
+      <s v="E:\Projects\eth_graph\Data\2023\март плвн 2023 камасутра печать.gr"/>
+      <s v="E:\Projects\eth_graph\Data\2023\март плвн 2023 камасутра.gr"/>
     </mru>
     <dayhours18/>
+    <dayhours19/>
+    <workers/>
   </strings>
   <userdata/>
   <forms>
-    <frmQuickInput Top="892" Left="827" Width="712" Height="32" BHeight="25">
+    <frmQuickInput Top="853" Left="672" Width="2" Height="2" BHeight="25">
       <Font Name="default" Size="14"/>
     </frmQuickInput>
-    <frmSumm Top="10" Left="782" Width="1017" Height="988" LastMonth="3" FirstMonth="1"/>
-    <frmMemo Top="36" Left="-1230" Width="852" Height="300"/>
-    <frmMemo_1 Top="159" Left="-990" Width="744" Height="546"/>
-    <frmEditManList Top="140" Left="851" Width="475" Height="774"/>
+    <frmSumm Top="-4" Left="-1284" Width="1280" Height="1005" LastMonth="6" FirstMonth="4"/>
+    <frmMemo Top="41" Left="224" Width="1189" Height="920"/>
+    <frmMemo_1 Top="28" Left="-1256" Width="1211" Height="1010"/>
+    <frmMemo_2 Top="28" Left="-632" Width="601" Height="915"/>
+    <frmEditManList Top="107" Left="354" Width="597" Height="617"/>
+    <frmAbs Top="375" Left="180" Width="1172" CSizes="42,198,120,117,70,210,276" Height="486" DateLast="44958" DateFirst="44927" SortField="wname, adate"/>
+    <frmGraphList Top="363" Left="1571" Width="260" Height="748" AlwaysOnTop="True"/>
+    <frmDBSummary Top="153" Left="227" Width="1081" Height="717" LastMonth="12" Lastmonth="0" FirstMonth="9"/>
+    <Log Top="812" Left="-1278" Width="230" Height="189"/>
   </forms>
 </options>
