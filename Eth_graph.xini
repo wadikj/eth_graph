@@ -221,13 +221,13 @@
       <Font Name="default" Size="14"/>
     </frmQuickInput>
     <frmSumm Top="-4" Left="-1284" Width="1280" Height="1005" LastMonth="6" FirstMonth="4"/>
-    <frmMemo Top="41" Left="224" Width="1189" Height="920"/>
+    <frmMemo Top="100" Left="191" Width="1189" Height="920"/>
     <frmMemo_1 Top="28" Left="-1256" Width="1211" Height="1010"/>
     <frmMemo_2 Top="28" Left="-632" Width="601" Height="915"/>
     <frmEditManList Top="107" Left="354" Width="597" Height="617"/>
     <frmAbs Top="375" Left="180" Width="1172" CSizes="42,198,120,117,70,210,276" Height="486" DateLast="44958" DateFirst="44927" SortField="wname, adate"/>
     <frmGraphList Top="363" Left="1571" Width="260" Height="748" AlwaysOnTop="True"/>
-    <frmDBSummary Top="153" Left="227" Width="1081" Height="717" LastMonth="12" Lastmonth="0" FirstMonth="9"/>
+    <frmDBSummary Top="153" Left="227" Width="1081" Height="717" LastMonth="10" Lastmonth="0" FirstMonth="10"/>
     <Log Top="812" Left="-1278" Width="230" Height="189"/>
   </forms>
 </options>
